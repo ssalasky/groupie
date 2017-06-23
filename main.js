@@ -1,3 +1,6 @@
+
+alert("connected");
+
 var flights{
 	to:"",
 	from:"",
@@ -7,3 +10,4 @@ var flights{
 function flightSearch(){
 	$("#")
 }
+
