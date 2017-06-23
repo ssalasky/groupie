@@ -1,0 +1,53 @@
+
+body{
+	/*background-color: #696969;*/
+	font-family: "Times New Roman", Georgia, Serif;
+}
+.navbar-default{
+	margin: 20px;
+	background-color: #708090;
+
+}
+.navbar-right{
+	margin-right: 15px;
+}
+.name{
+	color:white;
+}
+li{
+	position: absolute;
+	margin-right: 10px;
+	color: white;
+}
+h1{
+	text-align: center;
+}
+#glyph{
+	float: right;
+	margin-top: -35px;
+	margin-right: 40%;
+}
+.form-control{
+	margin-top: 100px;
+	width: 40%;
+	margin-left: 70px;
+}
+h2{
+	margin: 5px;
+	text-align: center;
+	 text-decoration: none;
+	 margin-top: 20px;
+	 font-weight: bold;
+}
+label{
+	font-size: 40px;
+    margin-left: 35%;
+    text-align: center;
+
+}
+p{
+	 margin-left: 5%;
+	 font-family: 'Lobster', cursive;
+	 font-size: 18px;
+	 text-align: center;
+}
