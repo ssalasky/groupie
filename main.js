@@ -7,21 +7,35 @@ var city = "";
 
 
 
-var flights = {
-	to:"",
-	from:"",
-	departTo:"",
-	departHome:""
+var params = {
+  request: {
+    slice: [
+      {
+        origin: "DEN",
+        destination: "LAX",
+        date: "2017-06-23"
+      }
+    ],
+    passengers: {
+      adultCount: 1,
+      infantInLapCount: 0,
+      infantInSeatCount: 0,
+      childCount: 0,
+      seniorCount: 0
+    },
+    solutions: 20,
+    refundable: false
+  }
 }
 function flightSearch(){
 	$("#glyph").on("click", function(){
-		var to = $("#search-input").val().trim();
-		var queryURL = "https://api.test.sabre.com/v1/shop/flights?origin=JFK&destination=" + to + "&departuredate=2017-07-07&returndate=2017-07-08&onlineitinerariesonly=N&limit=10&offset=1&eticketsonly=N&sortby=totalfare&order=asc&sortby2=departuretime&order2=asc&pointofsalecountry=US";
+
+		var queryURL = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs";
 		$.ajax({
 		url: queryURL,
-		method: "GET"
-		Authorization: "Bearer T1RLAQJBiCrkxPozlYiWyTPNDg5vgjKT5hAKwt3kiUP4CMT/SRU/ZCzbAADAgItGc7BR6acrzxgvT9P+kSykvh/HK7fqFUGFaDUcF0S+TI/4hCIlK8hzZdvLK4Hq6XePYWaWz9s+X2pqt+ooMX8pBS5jDpkr9ZFs/KeXWhiu5Zq2R3LkDeZEQiVPdNUBfAosFaK7174NaUNtVg/eIvR1ZCDL9/Zxv2kjX575yYEyrKeL+LHtaDcnsfz4GpLncBanpUUaGMVRUlSK5r5MNBVjmrjMn7LFLN+MtCWcdmtHGDKyRQUhLn10tLyDv9Dl"
-		X-Originating-Ip: 130.253.27.159
+		headers: {"Content-Type":"application/json"},
+		data: JSON.stringify(params),
+		method: "POST"
 
 	}).done((response) => {
 	console.log(response);
