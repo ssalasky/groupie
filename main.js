@@ -1,6 +1,3 @@
-
-alert("connected");
-
 var flights{
 	to:"",
 	from:"",
