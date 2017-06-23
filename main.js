@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 var destCity = "";
 var yelpURL = "https://api.yelp.com/v3/businesses/search?location=" + city;
@@ -41,19 +42,20 @@ function yelpSearch() {
 
 
 =======
+=======
+
+>>>>>>> 2cc0ea047717fa5e332901f38790cf5ff1885019
 var destCity = ""; 
 var yelpURL = "https://api.yelp.com/v3/businesses/search?location=" + city; 
-var city = "";   
-
-alert("connected");   
+var city = "";    
 
 var flights = {
      to:"",
      from:"",     
      departTo:"",     
      departHome:"" 
- } 
-     
+ }
+
 function flightSearch(){
      $("#glyph").on("click", function(){
         var to = $("#search-input").val().trim();
