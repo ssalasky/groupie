@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 var destCity = "";
-var yelpURL = "https://api.yelp.com/v3/businesses/search?location=" + city;
-var city = "";
-
-=======
+var yelpURL = "https://api.yelp.com/v3/businesses/search?location=" + destCity;
 
 alert("connected");
->>>>>>> edcdad3aef21aa4e2e2dbd887c8609b02287d90d
 
 var flights{
 	to:"",
@@ -18,8 +13,6 @@ function flightSearch(){
 	$("#")
 }
 
-<<<<<<< HEAD
-
 function yelpSearch() {
 	$.ajax ({
 		url: yelpURL,
@@ -29,5 +22,3 @@ function yelpSearch() {
 	});
 }
 
-=======
->>>>>>> edcdad3aef21aa4e2e2dbd887c8609b02287d90d
