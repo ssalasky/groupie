@@ -1,16 +1,15 @@
+
 var destCity = ""; 
 var yelpURL = "https://api.yelp.com/v3/businesses/search?location=" + city; 
-var city = "";   
-
-alert("connected");   
+var city = "";    
 
 var flights = {
      to:"",
      from:"",     
      departTo:"",     
      departHome:"" 
- } 
-     
+ }
+
 function flightSearch(){
      $("#glyph").on("click", function(){
         var to = $("#search-input").val().trim();
