@@ -20,6 +20,9 @@ function flightSearch(){
 		$.ajax({
 		url: queryURL,
 		method: "GET"
+		Authorization: "Bearer T1RLAQJBiCrkxPozlYiWyTPNDg5vgjKT5hAKwt3kiUP4CMT/SRU/ZCzbAADAgItGc7BR6acrzxgvT9P+kSykvh/HK7fqFUGFaDUcF0S+TI/4hCIlK8hzZdvLK4Hq6XePYWaWz9s+X2pqt+ooMX8pBS5jDpkr9ZFs/KeXWhiu5Zq2R3LkDeZEQiVPdNUBfAosFaK7174NaUNtVg/eIvR1ZCDL9/Zxv2kjX575yYEyrKeL+LHtaDcnsfz4GpLncBanpUUaGMVRUlSK5r5MNBVjmrjMn7LFLN+MtCWcdmtHGDKyRQUhLn10tLyDv9Dl"
+		X-Originating-Ip: 130.253.27.159
+
 	}).done((response) => {
 	console.log(response);
 	});
