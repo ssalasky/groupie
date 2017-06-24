@@ -1,7 +1,4 @@
-
-var destCity = "";
-var yelpURL = "https://api.yelp.com/v3/businesses/search?location=" + city;
-var city = "";
+var artist = "";
 
 var params = {
   request: {
@@ -23,42 +20,32 @@ var params = {
     refundable: false
   }
 }
+
+
 function flightSearch(){
-	$("#glyph").on("click", function(){
+    	$("#glyph").on("click", function(){
 
-		var queryURL = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs";
-		$.ajax({
-		url: queryURL,
-		headers: {"Content-Type":"application/json"},
-		data: JSON.stringify(params),
-		method: "POST"
+    		var queryURL = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs";
+    		$.ajax({
+    		url: queryURL,
+    		headers: {"Content-Type":"application/json"},
+    		data: JSON.stringify(params),
+    		method: "POST"
 
-	}).done((response) => {
-	console.log(response);
-	});
-});
+    	}).done((response) => {
+    	console.log(response);
+    	});
+    });
 };
+
 flightSearch();
 
 
-
-
-function yelpSearch() {
-	$.ajax ({
-		url: yelpURL,
-		method: "GET"
-	}).done(function(response) {
-		console.log(response);
-	});
-}
-
- 	var artist = "";
- 	var queryURL = "https://api.seatgeek.com/2/events?q=" + artist + "&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
-
-    
+ 	   
     $("#submitArtist").on("click", function(){
     	artist = $("#artistID").val().trim();
 
+        var queryURL = "https://api.seatgeek.com/2/events?q=" + artist + "&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
  	
 
 
