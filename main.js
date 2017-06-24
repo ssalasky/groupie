@@ -53,7 +53,13 @@ function yelpSearch() {
 }
 
  	var artist = "";
- 	var queryURL = "https://api.seatgeek.com/2/performers?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
+ 	var queryURL = "https://api.seatgeek.com/2/events?q=" + artist + "&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
+
+    
+    $("#submitArtist").on("click", function(){
+    	artist = $("#artistID").val().trim();
+
+ 	
 
 
     
@@ -66,8 +72,12 @@ function yelpSearch() {
     		return false
     	}
 
+
+
+
     	 	var artist = "";
- 	var queryURL = "https://api.seatgeek.com/2/events?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
+ 	
+
 
   
     // Javascript validation for search input
