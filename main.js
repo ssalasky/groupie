@@ -1,11 +1,7 @@
 
-
 var destCity = "";
 var yelpURL = "https://api.yelp.com/v3/businesses/search?location=" + city;
 var city = "";
-
-
-
 
 var params = {
   request: {
@@ -55,5 +51,28 @@ function yelpSearch() {
 	});
 }
 
+ 	var artist = "";
+ 	var queryURL = "https://api.seatgeek.com/2/events?q=" + artist + "&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy&limit=1";
 
+    
+    $("#submitArtist").on("click", function(){
+      event.preventDefault();
+
+    	artist = $("#artistID").val().trim();
+    // Javascript validation for search input
+    
+    	if(artist == '') {
+    		return false
+    	}
+
+    	$.ajax({
+      url: queryURL,
+      method: 'GET'
+    }).done(function(response) {
+      console.log(response);
+
+   
+   
+})
+    });
 
