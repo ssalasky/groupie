@@ -91,8 +91,8 @@ function yelpSearch() {
       method: 'GET'
     }).done(function(response) {
       console.log(response);
-var location = response.events[0].venue.location;
-
+  var location = response.performers[0].venue.location;
+      var upcomingEvents = response.performers[0].has_upcoming_events;
    
 })
     });
