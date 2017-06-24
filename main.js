@@ -53,16 +53,22 @@ function yelpSearch() {
 }
 
  	var artist = "";
- 	var queryURL = "https://api.seatgeek.com/2/performers?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
+ 	
 
 
     
     $("#glyph").on("click", function(){
     	artist = $("#search-input").val().trim();
 
+    	var queryURL = "https://api.seatgeek.com/2/events?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
+
+    	console.log(artist);
+
+
     // Javascript validation for search input
     
     	if(artist == '') {
+
     		return false
     	}
 
