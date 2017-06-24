@@ -73,6 +73,7 @@ function yelpSearch() {
       method: 'GET'
     }).done(function(response) {
       console.log(response);
+var location = response.events[0].venue.location;
 
    
    
