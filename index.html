@@ -30,36 +30,7 @@
   <div id="artistSpace">
   </div>
 
- <script type="text/javascript">
- 	var artist = "";
- 	var queryURL = "https://api.seatgeek.com/2/events?q=" + artist + "&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
-
-    
-    $("#submitArtist").on("click", function(){
-    	artist = $("#artistID").val().trim();
-
-    	$.ajax({
-      url: queryURL,
-      method: 'GET'
-    }).done(function(response) {
-      console.log(response);
-      // Still working on code below
-      // for(var i = 0; i < 5; i++) {
-      // 	var newDiv = $("<div>")
-      // 	var artistPic = $("<img>");
-      // 	var p = $("<p>");
-      // 	artistPic.addClass("artistPic");
-      // 	// artistPic.attr("src", response.image[i]);
-      // 	console.log(response.)
-      	
-   
-    }
-})
-    });
-
-
-
- </script>
+ 
 
 </div>
 	<title>Looking for fun</title>
