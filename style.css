@@ -1,12 +1,15 @@
 
 body{
-	/*background-color: #696969;*/
+	background-color: blue-grey;
 	font-family: "Times New Roman", Georgia, Serif;
 }
 .navbar-default{
 	margin: 20px;
 	background-color: #708090;
 
+}
+.name{
+	color: black;
 }
 .navbar-right{
 	margin-right: 15px;
@@ -24,16 +27,16 @@ h1{
 }
 #glyph{
 	float: right;
-	margin-top: -35px;
+	margin-top: -55px;
 	margin-right: 45%;
 }
-.form-control{
-	margin-top: 100px;
+#search-input{
+	margin-top: 10px;
 	width: 40%;
 	margin-left: 70px;
 }
 h2{
-	margin: 5px;
+	margin-top: 20px;
 	text-align: center;
 	 text-decoration: none;
 	 margin-top: 20px;
