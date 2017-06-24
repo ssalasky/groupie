@@ -1,11 +1,7 @@
 
-
 var destCity = "";
 var yelpURL = "https://api.yelp.com/v3/businesses/search?location=" + city;
 var city = "";
-
-
-
 
 var params = {
   request: {
@@ -13,7 +9,7 @@ var params = {
       {
         origin: "DEN",
         destination: "LAX",
-        date: "2017-06-23"
+        date: "2017-06-30"
       }
     ],
     passengers: {
@@ -46,6 +42,7 @@ flightSearch();
 
 
 
+
 function yelpSearch() {
 	$.ajax ({
 		url: yelpURL,
@@ -62,22 +59,41 @@ function yelpSearch() {
     $("#submitArtist").on("click", function(){
     	artist = $("#artistID").val().trim();
 
+ 	
+
+
+    
+    $("#glyph").on("click", function(){
+    	artist = $("#search-input").val().trim();
+
     // Javascript validation for search input
     
     	if(artist == '') {
     		return false
     	}
 
+
+
+
+    	 	var artist = "";
+ 	
+
+
+  
+    // Javascript validation for search input
+    
+    
+
     	$.ajax({
       url: queryURL,
       method: 'GET'
     }).done(function(response) {
       console.log(response);
-
+      var location = response.events[0].venue.city;
+      var upcomingEvents = response.events[0].has_upcoming_events;
+     
+      // console.log(location);
    
    
 })
     });
-
-
-
