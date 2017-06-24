@@ -9,7 +9,7 @@ var params = {
       {
         origin: "DEN",
         destination: "LAX",
-        date: "2017-06-23"
+        date: "2017-06-30"
       }
     ],
     passengers: {
@@ -52,6 +52,7 @@ function yelpSearch() {
 }
 
  	var artist = "";
+<<<<<<< HEAD
  	var queryURL = "https://api.seatgeek.com/2/events?q=" + artist + "&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy&limit=1";
 
     
@@ -71,6 +72,26 @@ function yelpSearch() {
     }).done(function(response) {
       console.log(response);
 
+=======
+ 	var queryURL = "https://api.seatgeek.com/2/events?q=" + artist + "&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
+
+    
+    $("#glyph").on("click", function(){
+    	artist = $("#search-input").val().trim();
+
+    // Javascript validation for search input
+    
+    	if(artist == '') {
+    		return false
+    	}
+
+    	$.ajax({
+      url: queryURL,
+      method: 'GET'
+    }).done(function(response) {
+      console.log(response);
+
+>>>>>>> c3e61e445c7bb7b4ba4ac13aa5e35cbb7c3385fa
    
    
 })
