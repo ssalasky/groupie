@@ -66,14 +66,24 @@ function yelpSearch() {
     		return false
     	}
 
+    	 	var artist = "";
+ 	var queryURL = "https://api.seatgeek.com/2/events?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
+
+  
+    // Javascript validation for search input
+    
+    
+
     	$.ajax({
       url: queryURL,
       method: 'GET'
     }).done(function(response) {
       console.log(response);
-  var location = response.performers[0].venue.location;
-      var upcomingEvents = response.performers[0].has_upcoming_events;
+      var location = response.events[0].venue.city;
+      var upcomingEvents = response.events[0].has_upcoming_events;
+     
+      // console.log(location);
+   
    
 })
     });
-
