@@ -53,6 +53,15 @@ function yelpSearch() {
 }
 
  	var artist = "";
+<<<<<<< HEAD
+=======
+ 	var queryURL = "https://api.seatgeek.com/2/events?q=" + artist + "&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
+
+    
+    $("#submitArtist").on("click", function(){
+    	artist = $("#artistID").val().trim();
+
+>>>>>>> 4641d79cdddbcbab1c9d8e89e16668ab65ae8acc
  	
 
 
@@ -72,14 +81,28 @@ function yelpSearch() {
     		return false
     	}
 
+
+
+
+    	 	var artist = "";
+ 	
+
+
+  
+    // Javascript validation for search input
+    
+    
+
     	$.ajax({
       url: queryURL,
       method: 'GET'
     }).done(function(response) {
       console.log(response);
-  var location = response.performers[0].venue.location;
-      var upcomingEvents = response.performers[0].has_upcoming_events;
+      var location = response.events[0].venue.city;
+      var upcomingEvents = response.events[0].has_upcoming_events;
+     
+      // console.log(location);
+   
    
 })
     });
-
