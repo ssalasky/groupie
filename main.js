@@ -46,6 +46,7 @@ flightSearch();
 
 
 
+
 function yelpSearch() {
 	$.ajax ({
 		url: yelpURL,
