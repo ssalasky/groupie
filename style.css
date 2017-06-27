@@ -1,5 +1,5 @@
 
-body{
+body {
 	background-color: blue-grey;
 	font-family: "Times New Roman", Georgia, Serif;
 }
@@ -8,23 +8,25 @@ body{
 	background-color: #708090;
 
 }
-.name{
-	color: black;
+.name {
+	color: #ffffff;
+	margin-top: -10px;
 }
-.navbar-right{
+.navbar-right {
 	margin-right: 15px;
 }
-.name{
-	color:white;
-}
-li{
+
+li {
 	position: absolute;
 	margin-right: 10px;
 	color: white;
 }
-h1{
+
+h1 {
 	text-align: center;
+	line-height: 100%;
 }
+
 #glyph{
 	float: right;
 	margin-top: -55px;
@@ -32,25 +34,41 @@ h1{
 }
 #search-input{
 	margin-top: 10px;
-	width: 40%;
-	margin-left: 70px;
+	width: 26%;
+	margin-left: 20%;
 }
-h2{
+
+h2 {     
+	padding-bottom: 20px;
+    color: #5d4037;
+	font-family: 'Lobster', cursive;
 	margin-top: 20px;
 	text-align: center;
-	 text-decoration: none;
-	 margin-top: 20px;
-	 font-weight: bold;
+	text-decoration: none;
+	font-weight: bold;
 }
 label{
+	color: #2e7d32;
 	font-size: 40px;
-    margin-left: 35%;
-    text-align: center;
+	margin-left: 40%;
+
 
 }
-p{
-	 margin-left: 5%;
-	 font-family: 'Lobster', cursive;
-	 font-size: 18px;
-	 text-align: center;
+
+p {
+	margin-left: 5%;
+	font-family: 'Lobster', cursive;
+	font-size: 18px;
+	text-align: center;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  color: white;
+  width: 100%;
+  text-align: center;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+  background-color: #666666;
 }
