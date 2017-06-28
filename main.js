@@ -21,3 +21,21 @@
    
 })
     });
+
+   function getGif(){
+      var queryURL = "https://api.giphy.com/v1/gifs/search?q=artist%20" + artist + "&rating=pg-13&api_key=dc6zaTOxFJmzC";
+    $.ajax({
+      url: queryURL,
+      method: 'GET'
+    }).done(function(response) {
+        var newDiv = $("<div>")
+        var artistGif = $("<img>");
+        artistGif.addClass("artistPic");
+        artistGif.attr("src", response.data[0].images.fixed_height.url);
+        moveGif = response.data[0].images.fixed_height.url;
+        stillGif = response.data[0].images.fixed_height_still.url;
+      
+        $("#artistSpace").append(newDiv);
+        newDiv.append(artistGif);   
+     
+ });
