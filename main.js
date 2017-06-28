@@ -125,3 +125,4 @@ function getGif(){
         newDiv.append(artistGif);   
      
  });
+};
