@@ -1,3 +1,4 @@
+
 var artist = "";
 //var airCode ="";
 var params = {
@@ -35,6 +36,7 @@ function flightSearch(){
 
     	}).done((response) => {
     	console.log(response);
+
     	
     	});
     //});
@@ -60,6 +62,7 @@ function airportCode(){
 
 	})
 	
+
 };
 
   
@@ -94,17 +97,14 @@ $("#glyph").on("click", function(){
 });	
 
 function placeSearch() {
-  // $("#glyph").on("click", function() {
 
-    var placeURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs"
-
-    $.ajax({
-      url: placeURL,
-      method: "GET"
-    }).done(function(response) {
-      console.log(response);
-    });
-  // });
+  $.ajax({
+    url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M",
+    type: "GET"
+  }).done(function(response) {
+    console.log(response);
+  });
 };
 
 placeSearch();
+
