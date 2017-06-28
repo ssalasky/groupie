@@ -1,3 +1,4 @@
+
 var artist = "";
 
 var params = {
