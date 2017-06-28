@@ -69,18 +69,16 @@ $("#glyph").on("click", function(){
 });
 
 function placeSearch() {
-  // $("#glyph").on("click", function() {
 
-    var placeURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M";
+  var placeURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ response.latitude + ","+ response.longitude + "&radius=500&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M";
 
-    $.ajax({
-      url: placeURL,
-      // headers: {"Content-Type":"application/json"},
-      type: "GET"
-    }).done(function(response) {
-      console.log(response);
-    });
-  // });
+  $.ajax({
+    url: placeURL,
+    data: JSON.stringify(location),
+    type: "GET"
+  }).done(function(response) {
+    console.log(response);
+  });
 };
 
 placeSearch();
