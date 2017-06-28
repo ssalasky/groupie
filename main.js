@@ -70,11 +70,8 @@ $("#glyph").on("click", function(){
 
 function placeSearch() {
 
-  var placeURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ response.latitude + ","+ response.longitude + "&radius=500&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M";
-
   $.ajax({
-    url: placeURL,
-    data: JSON.stringify(location),
+    url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M",
     type: "GET"
   }).done(function(response) {
     console.log(response);
@@ -83,39 +80,3 @@ function placeSearch() {
 
 placeSearch();
 
-
-// function createCORSRequest(method, url) {
-//   var xhr = new XMLHttpRequest();
-//   if ("withCredentials" in xhr) {
-//     xhr.open(method, url, true);
-//   } else if (typeof XDomainRequest != "undefined") {
-//     xhr = new XDomainRequest();
-//     xhr.open(method, url);
-//   } else {
-//     xhr = null;
-//   }
-//   return xhr;
-// }
-
-// function makeCorsRequest() {
-//   var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs";
-
-//   var xhr = createCORSRequest('GET', url);
-//   if (!xhr) {
-//     throw new Error("CORS not supported");
-//     return;
-//   }  
-//   xhr.onload = function() {
-//     var text = xhr.responseText;
-//     alert("Response from CORS request to " + url + ":");
-//     console.log(text);
-//   };
-
-//   xhr.onerror = function () {
-//     alert("Uh oh, there was an error making the request");
-//   };
-
-//   xhr.send();
-// }
-
-// makeCorsRequest();
