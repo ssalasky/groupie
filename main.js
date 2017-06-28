@@ -1,11 +1,11 @@
 var artist = "";
-
+//var airCode ="";
 var params = {
   request: {
     slice: [
       {
-        origin: "DEN",
-        destination: "LAX",
+        origin: "LAX",
+        destination: "",
         date: "2017-06-30"
       }
     ],
@@ -21,9 +21,10 @@ var params = {
   }
 }
 
+ 
 
 function flightSearch(){
-    	$("#glyph").on("click", function(){
+    	//$("#glyph").on("click", function(){
 
     		var queryURL = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs";
     		$.ajax({
@@ -34,11 +35,32 @@ function flightSearch(){
 
     	}).done((response) => {
     	console.log(response);
+    	
     	});
-    });
+    //});
 };
+// flightSearch();
+function airportCode(){
+	var queryURL = "http://www.distance24.org/route.json?stops="+zipCode
+	$.ajax({
+		url: queryURL,
+		method: "GET"
+	}).done(function(response){
+		console.log(response);
+		airCode = response.stops[0].airports[0].iata;
+		params.request.slice[0].destination = airCode;
+		console.log("new Dest " + airCode);
 
-flightSearch();
+		// newDest = "";
+		//newDest = airCode;
+		//console.log("new Dest " + newDest);
+		console.log(params);
+		flightSearch();
+		//console.log(airCode);
+
+	})
+	
+};
 
   
 $("#glyph").on("click", function(){
@@ -62,10 +84,14 @@ $("#glyph").on("click", function(){
     console.log(response);
     var location = response.events[0].venue.city;
     var upcomingEvents = response.events[0].has_upcoming_events;
- 
-  // console.log(location);
-   })
+    zipCode = response.events[0].venue.postal_code;
+    console.log(zipCode);
+	airportCode();
+	
+
 });
+
+});	
 
 function placeSearch() {
   // $("#glyph").on("click", function() {
