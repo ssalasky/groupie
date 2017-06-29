@@ -122,6 +122,9 @@ function getGif(){
         stillGif = response.data[0].images.fixed_height_still.url;
       
         $("#artistSpace").append(newDiv);
-        newDiv.append(artistGif);   
+        newDiv.append(artistGif);
+        
+      
      
- });
+   });
+};
