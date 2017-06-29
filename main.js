@@ -68,7 +68,7 @@ function airportCode(){
   
 $("#glyph").on("click", function(){
 	artist = $("#search-input").val().trim();
-
+ $("#artistSpace").empty();
 	var queryURL = "https://api.seatgeek.com/2/events?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
 
 	console.log(artist);
@@ -90,6 +90,8 @@ $("#glyph").on("click", function(){
     zipCode = response.events[0].venue.postal_code;
     console.log(zipCode);
 	airportCode();
+  getGif();
+
 	
 
 });
@@ -109,6 +111,7 @@ function placeSearch() {
 placeSearch();
 
 function getGif(){
+  console.log("called");
       var queryURL = "https://api.giphy.com/v1/gifs/search?q=artist%20" + artist + "&rating=pg-13&api_key=dc6zaTOxFJmzC";
     $.ajax({
       url: queryURL,
