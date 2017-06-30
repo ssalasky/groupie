@@ -27,7 +27,7 @@ var params = {
 function flightSearch(){
     	//$("#glyph").on("click", function(){
 
-    		var queryURL = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs";
+    		var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs";
     		$.ajax({
     		url: queryURL,
     		headers: {"Content-Type":"application/json"},
@@ -43,7 +43,7 @@ function flightSearch(){
 };
 // flightSearch();
 function airportCode(){
-	var queryURL = "http://www.distance24.org/route.json?stops="+zipCode
+	var queryURL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zipCode
 	$.ajax({
 		url: queryURL,
 		method: "GET"
