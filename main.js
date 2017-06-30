@@ -74,11 +74,11 @@ $("#glyph").on("click", function(){
 	console.log(artist);
 // Javascript validation for search input
 
-	if(artist == '') {
+	if(!artist) {
 		return false
 	}
 
-	var artist = "";
+	
 
 	$.ajax({
     url: queryURL,
@@ -91,10 +91,12 @@ $("#glyph").on("click", function(){
     console.log(zipCode);
 	airportCode();
   getGif();
-
+  console.log(artist);
+  
 	
 
 });
+$("#search-input").val("");
 
 });	
 
@@ -112,6 +114,7 @@ placeSearch();
 
 function getGif(){
   console.log("called");
+  console.log(artist);
       var queryURL = "https://api.giphy.com/v1/gifs/search?q=artist%20" + artist + "&rating=pg-13&api_key=dc6zaTOxFJmzC";
     $.ajax({
       url: queryURL,
