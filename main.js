@@ -32,7 +32,7 @@ var params = {
 
 
 function flightSearch(){
-      //$("#glyph").on("click", function(){
+
 
 
         var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyDlW31JmWnRfy96JfYhjDQiL2ZQNYB2xkk";
@@ -41,6 +41,7 @@ function flightSearch(){
         headers: {"Content-Type":"application/json"},
         data: JSON.stringify(params),
         method: "POST"
+
 
         
 
@@ -55,18 +56,31 @@ function flightSearch(){
        });
     //});
   };
-// flightSearch();
+
 function airportCode(){
 
-  var queryURL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zipCode
+	var queryURL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zipCode
+	$.ajax({
+		url: queryURL,
+		method: "GET"
+	}).done(function(response){
+		console.log(response);
+		airCode = response.stops[0].airports[0].iata;
+		params.request.slice[0].destination = airCode;
+		console.log("new Dest " + airCode);
+
+  });
+
+  var URL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zips
   $.ajax({
-    url: queryURL,
+    url: URL,
     method: "GET"
-  }).done(function(response){
+  }).done(function(response){ 
     console.log(response);
-    airCode = response.stops[0].airports[0].iata;
-    params.request.slice[0].destination = airCode;
-    console.log("new Dest " + airCode);
+    fromFlight = response.stops[0].airports[0].iata;
+    params.request.slice[0].origin = fromFlight
+    console.log("from " + fromFlight)
+
 
   });
 
@@ -86,6 +100,15 @@ function airportCode(){
   
     console.log(params);
     flightSearch();
+
+
+
+	})
+   setTimeout(function() { flightSearch(); }, 1000)
+	
+    console.log(params);
+    
+
 
 };
 
@@ -112,6 +135,7 @@ var map, infoWindow;
             zips = response.results[0].address_components[7].long_name;
             console.log("hey " + zips);
 
+
           });
 
             infoWindow.setPosition(pos);
@@ -120,12 +144,13 @@ var map, infoWindow;
             map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
+
           });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-      }
+
+           
+      });
+        };
+      };
 
       initMap()
 
@@ -140,6 +165,12 @@ var map, infoWindow;
     
 
 
+
+$("#search-button").on("click", function(){
+
+
+
+
 $("#search-button").on("click", function(){
 
   artist = $("#search-input").val().trim();
@@ -148,9 +179,11 @@ $("#search-button").on("click", function(){
 
 
 
-  if(!artist) {
-    return false
-  }
+	if(!artist) {
+		return false
+	}
+
+
 
   
 
@@ -168,7 +201,10 @@ $("#search-button").on("click", function(){
     date = moment(response.events[0].datetime_local).format('YYYY-MM-DD');
   params.request.slice[0].date = date
   console.log(date)
-  airportCode();
+
+	airportCode();
+  startSearch();
+
   getGif();
 
   console.log(artist);
@@ -190,7 +226,9 @@ function placeSearch() {
   });
 };
 
+
 placeSearch();
+
 
 function getGif(){
   console.log("called");
@@ -226,11 +264,6 @@ function getGif(){
 //     console.log(response)
 //   })
 // }
-
-
-
-
-
 
 
 
