@@ -8,7 +8,7 @@ var params = {
     {
       origin: "LAX",
       destination: "",
-      date: "2017-06-30"
+      date: ""
     }
     ],
     passengers: {
@@ -24,7 +24,6 @@ var params = {
 }
 
 // function startSearch(){
-//   $("#first-page").on("click" function(){
 //     $("#second-page").empty();
 //     flightSearch();
 //     // here we will call the function that are needed.
@@ -36,13 +35,15 @@ var params = {
 function flightSearch(){
       //$("#glyph").on("click", function(){
 
-    		var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs";
+
+    		var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCR4HyhO9Wwee1Zb9G_1he2sG3-18Tl28E";
     		$.ajax({
     		url: queryURL,
     		headers: {"Content-Type":"application/json"},
     		data: JSON.stringify(params),
     		method: "POST"
 
+        
 
         }).done((response) => {
          console.log(response);
@@ -82,6 +83,47 @@ function airportCode(){
 };
 
 
+var map, infoWindow;
+      function initMap() {
+        //map = new google.maps.Map(document.getElementById('map'), {
+        //   center: {lat: -34.397, lng: 150.644},
+        //   zoom: 6
+        // });
+        // infoWindow = new google.maps.InfoWindow;
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            console.log(pos)
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      initMap()
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+
+
 $("#search-button").on("click", function(){
 
 	artist = $("#search-input").val().trim();
@@ -107,21 +149,24 @@ $("#search-button").on("click", function(){
     zipCode = response.events[0].venue.postal_code;
     console.log(zipCode);
     console.log(hotelArea);
+    date = moment(response.events[0].datetime_local).format('YYYY-MM-DD');
+  params.request.slice[0].date = date
+  console.log(date)
 	airportCode();
   getGif();
 
   console.log(artist);
   
-
-
 });
 $("#search-input").val("");
 
 }); 
 
+
 function placeSearch() {
   var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M";
-  $.ajax({ 
+
+	$.ajax({ 
     url: queryURL,
     type: "GET"
   }).done(function(response) {
