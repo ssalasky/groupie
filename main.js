@@ -1,3 +1,23 @@
+
+var config = {
+    apiKey: "AIzaSyD7Dl_oVcskvGAUxxgm3LwQC_saHWDZlbQ",
+    authDomain: "groupie-project.firebaseapp.com",
+    databaseURL: "https://groupie-project.firebaseio.com",
+    projectId: "groupie-project",
+    storageBucket: "groupie-project.appspot.com",
+    messagingSenderId: "98043513312"
+  };
+ firebase.initializeApp(config);
+ var database = firebase.database();
+$("#search-button").on("click", function(){
+    event.preventDefault();
+    artist = $("#search-input").val();
+//push to the database
+  database.ref().push({
+    artist:artist
+  });
+});
+
 var artist = "";
 var hotelArea = "";
 //var airCode ="";
@@ -47,15 +67,15 @@ function flightSearch(){
 
         }).done((response) => {
          console.log(response);
-         // var flightDiv = $("<div>");
-         // flightDiv.addClass("flight");
-         // flight.text("Flight Place" + --------);
-         // $("#second-page").append(flightDiv);
 
+//          // var flightDiv = $("<div>");
+//          // flightDiv.addClass("flight");
+//          // flight.html("Flight Place" + ----here we will write the data that we are pulling----);
+//          // $("#second-page").append(flightDiv);
+  
+});
+       };
 
-       });
-    //});
-  };
 
 function airportCode(){
 
@@ -78,8 +98,8 @@ function airportCode(){
   }).done(function(response){ 
     console.log(response);
     fromFlight = response.stops[0].airports[0].iata;
-    params.request.slice[0].origin = fromFlight
-    console.log("from " + fromFlight)
+    params.request.slice[0].origin = fromFlight;
+    console.log("from " + fromFlight);
 
 
   });
@@ -104,7 +124,7 @@ function airportCode(){
 
 
 	})
-   setTimeout(function() { flightSearch(); }, 1000)
+   setTimeout(function() { flightSearch(); }, 1500);
 	
     console.log(params);
     
@@ -152,15 +172,7 @@ var map, infoWindow;
         };
       };
 
-      initMap()
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
+      initMap();
 
     
 
@@ -208,11 +220,11 @@ $("#search-button").on("click", function(){
   getGif();
 
   console.log(artist);
+  $("#search-input").val("");
   
-});
-$("#search-input").val("");
+  });
 
-}); 
+});
 
 
 function placeSearch() {
@@ -264,6 +276,8 @@ function getGif(){
 //     console.log(response)
 //   })
 // }
+
+
 
 
 
