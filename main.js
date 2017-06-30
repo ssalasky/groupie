@@ -18,6 +18,7 @@ $("#search-button").on("click", function(){
   });
 });
 
+
 var artist = "";
 var hotelArea = "";
 //var airCode ="";
@@ -42,16 +43,17 @@ var params = {
   }
 }
 
-// function startSearch(){
-//     $("#second-page").empty();
+function startSearch(){
+    $("#first-page").empty();
 //     flightSearch();
 //     // here we will call the function that are needed.
-//   });
+  };
   
 // }
 
 
 function flightSearch(){
+
 
 
 
@@ -68,26 +70,28 @@ function flightSearch(){
         }).done((response) => {
          console.log(response);
 
-//          // var flightDiv = $("<div>");
-//          // flightDiv.addClass("flight");
-//          // flight.html("Flight Place" + ----here we will write the data that we are pulling----);
-//          // $("#second-page").append(flightDiv);
-  
-});
-       };
+         // var flightDiv = $("<div>");
+         // flightDiv.addClass("flight");
+         // flight.text("Flight Place" + --------);
+         // $("#second-page").append(flightDiv);
+
+
+       });
+    //});
+  };
 
 
 function airportCode(){
 
-	var queryURL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zipCode
-	$.ajax({
-		url: queryURL,
-		method: "GET"
-	}).done(function(response){
-		console.log(response);
-		airCode = response.stops[0].airports[0].iata;
-		params.request.slice[0].destination = airCode;
-		console.log("new Dest " + airCode);
+  var queryURL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zipCode
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).done(function(response){
+    console.log(response);
+    airCode = response.stops[0].airports[0].iata;
+    params.request.slice[0].destination = airCode;
+    console.log("new Dest " + airCode);
 
   });
 
@@ -104,28 +108,11 @@ function airportCode(){
 
   });
 
-  var URL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zips
-  $.ajax({
-    url: URL,
-    method: "GET"
-  }).done(function(response){ 
-    console.log(response);
-    fromFlight = response.stops[0].airports[0].iata;
-    params.request.slice[0].origin = fromFlight
-    console.log("from " + fromFlight)
 
-
-
-  })
   
-    console.log(params);
-    flightSearch();
-
-
-
-	})
+  
    setTimeout(function() { flightSearch(); }, 1500);
-	
+  
     console.log(params);
     
 
@@ -158,28 +145,15 @@ var map, infoWindow;
 
           });
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-
-          });
-
            
       });
         };
       };
+     
 
       initMap();
 
     
-
-
-
-$("#search-button").on("click", function(){
-
 
 
 
@@ -191,9 +165,9 @@ $("#search-button").on("click", function(){
 
 
 
-	if(!artist) {
-		return false
-	}
+  if(!artist) {
+    return false
+  }
 
 
 
@@ -214,7 +188,7 @@ $("#search-button").on("click", function(){
   params.request.slice[0].date = date
   console.log(date)
 
-	airportCode();
+  airportCode();
   startSearch();
 
   getGif();
@@ -224,7 +198,9 @@ $("#search-button").on("click", function(){
   
   });
 
-});
+
+}); 
+
 
 
 function placeSearch() {
