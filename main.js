@@ -4,11 +4,11 @@ var artist = "";
 var params = {
   request: {
     slice: [
-      {
-        origin: "LAX",
-        destination: "",
-        date: "2017-06-30"
-      }
+    {
+      origin: "LAX",
+      destination: "",
+      date: "2017-06-30"
+    }
     ],
     passengers: {
       adultCount: 1,
@@ -22,28 +22,42 @@ var params = {
   }
 }
 
- 
+function startSearch(){
+  $("#first-page").on("click" function(){
+    $("#second-page").empty();
+    flightSearch();
+    // here we will call the function that are needed.
+  });
+  
+}
+
 
 function flightSearch(){
-    	//$("#glyph").on("click", function(){
+      //$("#glyph").on("click", function(){
 
-    		var queryURL = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs";
+    		var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs";
     		$.ajax({
     		url: queryURL,
     		headers: {"Content-Type":"application/json"},
     		data: JSON.stringify(params),
     		method: "POST"
 
-    	}).done((response) => {
-    	console.log(response);
 
-    	
-    	});
+        }).done((response) => {
+         console.log(response);
+         var flightDiv = $("<div>");
+         flightDiv.addClass("flight");
+         flight.text("Flight Place" + --------);
+         $("#second-page").append(flightDiv);
+
+
+       });
     //});
-};
+  };
 // flightSearch();
 function airportCode(){
-	var queryURL = "http://www.distance24.org/route.json?stops="+zipCode
+
+	var queryURL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zipCode
 	$.ajax({
 		url: queryURL,
 		method: "GET"
@@ -63,16 +77,17 @@ function airportCode(){
 	})
 	
 
+
 };
 
-  
+
 $("#glyph").on("click", function(){
+
 	artist = $("#search-input").val().trim();
  $("#artistSpace").empty();
-	var queryURL = "https://api.seatgeek.com/2/events?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
+	var queryURL = "https://cors-anywhere.herokuapp.com/https://api.seatgeek.com/2/events?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
 
-	console.log(artist);
-// Javascript validation for search input
+
 
 	if(!artist) {
 		return false
@@ -93,17 +108,17 @@ $("#glyph").on("click", function(){
   getGif();
   console.log(artist);
   
-	
+
 
 });
 $("#search-input").val("");
 
-});	
+}); 
 
 function placeSearch() {
-
-  $.ajax({
-    url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M",
+  var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M",
+  $.ajax({ 
+    url: queryURL,
     type: "GET"
   }).done(function(response) {
     console.log(response);
@@ -114,8 +129,9 @@ placeSearch();
 
 function getGif(){
   console.log("called");
-  console.log(artist);
-      var queryURL = "https://api.giphy.com/v1/gifs/search?q=artist%20" + artist + "&rating=pg-13&api_key=dc6zaTOxFJmzC";
+
+      var queryURL = "https://cors-anywhere.herokuapp.com/https://api.giphy.com/v1/gifs/search?q=artist%20" + artist + "&rating=pg-13&api_key=dc6zaTOxFJmzC";
+
     $.ajax({
       url: queryURL,
       method: 'GET'
@@ -131,6 +147,7 @@ function getGif(){
         newDiv.append(artistGif);
         
       
-     
-   });
+
+ });
 };
+
