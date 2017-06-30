@@ -5,34 +5,37 @@ body {
 	background-image: url("images/party.jpg");
 
 }
+
 .btn, .btn-large {
-    float: right;
-    margin-top: -70px;
-    text-decoration: none;
-    color: #fff;
-    background-color: #26a69a;
-    text-align: center;
-    letter-spacing: .5px;
-    transition: .2s ease-out;
-    cursor: pointer;
+	float: right;
+	margin-top: -70px;
+	text-decoration: none;
+	color: #fff;
+	background-color: #26a69a;
+	text-align: center;
+	letter-spacing: .5px;
+	transition: .2s ease-out;
+	cursor: pointer;
 }
 
-.navbar-default{
+.navbar-default {
 	margin: 20px;
 	background-color: #708090;
 
 }
+
 .first-p{
 	color: red;
 }
-first-h2{
+
+first-h2 {
 	margin-bottom: 10px;
 }
 .name {
-	margin-left: 0px;
+	/*margin-left: 0px;*/
 	/*color: #ffffff;*/
 	background-color: white;
-    color: black;
+	color: black;
 	/*margin-top: -20px;*/
 }
 .navbar-right {
@@ -51,30 +54,31 @@ h1 {
 }
 
 
-#glyph{
+#search-button {
+	position: absolute;
 	float: right;
-    margin-right: 25%;
-    margin-top: 0.9%;
+	margin-right: 25%;
+	margin-top: 0.8%;
 }
 .btn-info{
-padding-top: 11px;
-padding-bottom: 35px;
+	padding-top: 11px;
+	padding-bottom: 35px;
 
 }
 #search-input{
 	background-color: white;
 	padding-left: 5px;
 	font-weight: bolder;
-    color: green;
-    font-size: 16px;
-    margin-top: 10px;
-    width: 30%;
-    margin-left: 35%;
+	color: green;
+	font-size: 16px;
+	margin-top: 10px;
+	width: 30%;
+	margin-left: 35%;
 }
 
 h2 {     
 	padding-bottom: 20px;
-    color: #5d4037;
+	color: #5d4037;
 	font-family: 'Lobster', cursive;
 	margin-top: -10px;
 	text-align: center;
@@ -97,15 +101,16 @@ p {
 }
 
 .footer {
-  position: fixed;
-  bottom: 0;
-  padding-top: 15px;
-/*  color: white;*/
+	position: fixed;
+	bottom: 0;
+	padding-top: 15px;
+	/*  color: white;*/
 	color:black;
-  width: 100%;
-  text-align: center;
-  /* Set the fixed height of the footer here */
-  height: 50px;
- /* background-color: #666666;*/
- background-color: white;
+	width: 100%;
+	text-align: center;
+	/* Set the fixed height of the footer here */
+	height: 50px;
+	/* background-color: #666666;*/
+	background-color: white;
 }
+
