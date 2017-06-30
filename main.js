@@ -83,15 +83,15 @@ function flightSearch(){
 
 function airportCode(){
 
-	var queryURL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zipCode
-	$.ajax({
-		url: queryURL,
-		method: "GET"
-	}).done(function(response){
-		console.log(response);
-		airCode = response.stops[0].airports[0].iata;
-		params.request.slice[0].destination = airCode;
-		console.log("new Dest " + airCode);
+  var queryURL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zipCode
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).done(function(response){
+    console.log(response);
+    airCode = response.stops[0].airports[0].iata;
+    params.request.slice[0].destination = airCode;
+    console.log("new Dest " + airCode);
 
   });
 
@@ -112,7 +112,7 @@ function airportCode(){
   
   
    setTimeout(function() { flightSearch(); }, 1500);
-	
+  
     console.log(params);
     
 
@@ -165,9 +165,9 @@ $("#search-button").on("click", function(){
 
 
 
-	if(!artist) {
-		return false
-	}
+  if(!artist) {
+    return false
+  }
 
 
 
@@ -188,7 +188,7 @@ $("#search-button").on("click", function(){
   params.request.slice[0].date = date
   console.log(date)
 
-	airportCode();
+  airportCode();
   startSearch();
 
   getGif();
@@ -252,8 +252,3 @@ function getGif(){
 //     console.log(response)
 //   })
 // }
-
-
-
-
-
