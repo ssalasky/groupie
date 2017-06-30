@@ -13,46 +13,31 @@
 	<nav class="navbar navbar-default">
 		<div class="container-fluid ">
 			<h1 class="name"> Groupie</h1>
-		<!-- 	<a class='dropdown-button btn' href='#' data-activates='dropdown1'>connect Here!</a> -->
-
 		</div>
 	</nav>
 	<!-- 	first page display that will show what this page is for. -->
-	<div class="first-page-display">
+	<div class="first-page">
 		<label id"search-input">Start Your Fun Here</label>
 		<p><small>search your favorite artist below. We will connect you to his/her</small> </p>
 		<h2 class="first-h2"> Events, Flights, Hotels, </h2>
-		<!-- 	<h2> Night Life,</h2> -->
 		<h2>& So Much More...</h2>
-		<!-- <input class="form-control" id="search-input" type="text"> -->
-		<input placeholder=" search here" id="search-input" type="text" class="validate">
-		<!-- 		<input id="search-input" type="search" required> -->
-		<button type="button" class="btn btn-info" id="glyph">
-			<span class="glyphicon glyphicon-search"></span> Search
-		</button>
+		<form>
+			<input placeholder id="search-input" type="text" class="validate">
+			<button type="button" class="btn btn-info" id="search-button">
+				<span class="glyphicon glyphicon-search"></span> Search
+			</button>
+		</form>
 	</div>
 	
 	<!-- 	main body where our flights and hotels will be displayed -->
-	<div class="container container-fluid">
-		<div>
-			<div class="flights-view">
-				<div class="transportation-view">
-					<div class="hotes-view"> 
-						<div class="night-life-view">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div id="second-page"></div>
+
+	
 	<script type="text/javascript" src="main.js"></script>
 	<footer>
 		<div class="footer">
 			Copyright &copy; 2017 Adam, Danile, Hayelom,Sam
-       <!-- <li>xy</li>
-       <li>xy</li>
-       <li>li</li> -->
-   </div>
-</footer>
+		</div>
+	</footer>
 </body>
 </html>
