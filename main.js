@@ -1,4 +1,3 @@
-
 var artist = "";
 var hotelArea = "";
 //var airCode ="";
@@ -23,40 +22,40 @@ var params = {
   }
 }
 
+// function startSearch(){
+//     $("#second-page").empty();
+//     flightSearch();
+//     // here we will call the function that are needed.
+//   });
+  
+// }
 
-function startSearch(){
-  //$("#search-button").on("click",function(){
-    $("#first-page").empty();
-    //lightSearch();
-    // here we will call the function that are needed.
-  };
-
-
-
-
-  $("#search-button").on("click", function(){
-     event.preventDefault();
 
 function flightSearch(){
-//       //$("#glyph").on("click", function(){
 
 
 
-    		var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyDlW31JmWnRfy96JfYhjDQiL2ZQNYB2xkk";
-    		$.ajax({
-    		url: queryURL,
-    		headers: {"Content-Type":"application/json"},
-    		data: JSON.stringify(params),
-    		method: "POST"
-         }).done((response) => {
+        var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyDlW31JmWnRfy96JfYhjDQiL2ZQNYB2xkk";
+        $.ajax({
+        url: queryURL,
+        headers: {"Content-Type":"application/json"},
+        data: JSON.stringify(params),
+        method: "POST"
+
+
+        
+
+        }).done((response) => {
          console.log(response);
-//          // var flightDiv = $("<div>");
-//          // flightDiv.addClass("flight");
-//          // flight.html("Flight Place" + ----here we will write the data that we are pulling----);
-//          // $("#second-page").append(flightDiv);
+         // var flightDiv = $("<div>");
+         // flightDiv.addClass("flight");
+         // flight.text("Flight Place" + --------);
+         // $("#second-page").append(flightDiv);
 
-  
+
        });
+    //});
+  };
 
 function airportCode(){
 
@@ -83,12 +82,33 @@ function airportCode(){
     console.log("from " + fromFlight)
 
 
+  });
+
+  var URL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zips
+  $.ajax({
+    url: URL,
+    method: "GET"
+  }).done(function(response){ 
+    console.log(response);
+    fromFlight = response.stops[0].airports[0].iata;
+    params.request.slice[0].origin = fromFlight
+    console.log("from " + fromFlight)
+
+
+
+  })
+  
+    console.log(params);
+    flightSearch();
+
+
 
 	})
    setTimeout(function() { flightSearch(); }, 1000)
 	
     console.log(params);
     
+
 
 };
 
@@ -115,6 +135,16 @@ var map, infoWindow;
             zips = response.results[0].address_components[7].long_name;
             console.log("hey " + zips);
 
+
+          });
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+
           });
 
            
@@ -135,12 +165,15 @@ var map, infoWindow;
     
 
 
+
 $("#search-button").on("click", function(){
 
 
 
 
-  artist = $("#search-input").val();
+$("#search-button").on("click", function(){
+
+  artist = $("#search-input").val().trim();
  $("#artistSpace").empty();
   var queryURL = "https://cors-anywhere.herokuapp.com/https://api.seatgeek.com/2/events?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
 
@@ -152,8 +185,9 @@ $("#search-button").on("click", function(){
 
 
 
+  
 
-	$.ajax({
+  $.ajax({
     url: queryURL,
     method: 'GET'
   }).done(function(response) {
@@ -167,23 +201,24 @@ $("#search-button").on("click", function(){
     date = moment(response.events[0].datetime_local).format('YYYY-MM-DD');
   params.request.slice[0].date = date
   console.log(date)
+
 	airportCode();
   startSearch();
-  getGif();
 
+  getGif();
 
   console.log(artist);
   
 });
 $("#search-input").val("");
 
-
+}); 
 
 
 function placeSearch() {
   var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M";
-
-	$.ajax({ 
+  
+  $.ajax({ 
     url: queryURL,
     type: "GET"
   }).done(function(response) {
@@ -192,11 +227,12 @@ function placeSearch() {
 };
 
 
-// placeSearch();
+placeSearch();
+
 
 function getGif(){
   console.log("called");
-
+  
       var queryURL = "https://cors-anywhere.herokuapp.com/https://api.giphy.com/v1/gifs/search?q=artist%20" + artist + "&rating=pg-13&api_key=dc6zaTOxFJmzC";
 
     $.ajax({
@@ -212,10 +248,22 @@ function getGif(){
       
         $("#artistSpace").append(newDiv);
         newDiv.append(artistGif);
-        // $("#second-page").append(newDiv);
         
       
 
  });
 };
+// function dadJoke() {
+//   console.log('dad');
+//   var queryURL ="https://icanhazdadjoke.com/j/";
+//   $.ajax({
+//     Accept: "application/json",
+//     url: queryURL,
+//     method: 'GET'
+//   }).done(function(response){
+//     console.log(response)
+//   })
+// }
+
+
 
