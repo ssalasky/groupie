@@ -35,21 +35,15 @@ function startSearch(){
 function flightSearch(){
       //$("#glyph").on("click", function(){
 
-<<<<<<< HEAD
+
     		var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs";
     		$.ajax({
     		url: queryURL,
     		headers: {"Content-Type":"application/json"},
     		data: JSON.stringify(params),
     		method: "POST"
-=======
-        var queryURL = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs";
-        $.ajax({
-          url: queryURL,
-          headers: {"Content-Type":"application/json"},
-          data: JSON.stringify(params),
-          method: "POST"
->>>>>>> 3466e7298b8a5ee1f5d61de9933595b7301efa99
+
+        
 
         }).done((response) => {
          console.log(response);
@@ -64,7 +58,7 @@ function flightSearch(){
   };
 // flightSearch();
 function airportCode(){
-<<<<<<< HEAD
+
 	var queryURL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zipCode
 	$.ajax({
 		url: queryURL,
@@ -84,27 +78,7 @@ function airportCode(){
 
 	})
 	
-=======
-  var queryURL = "http://www.distance24.org/route.json?stops="+zipCode
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).done(function(response){
-    console.log(response);
-    airCode = response.stops[0].airports[0].iata;
-    params.request.slice[0].destination = airCode;
-    console.log("new Dest " + airCode);
 
-    // newDest = "";
-    //newDest = airCode;
-    //console.log("new Dest " + newDest);
-    console.log(params);
-    flightSearch();
-    //console.log(airCode);
-
-  })
-  
->>>>>>> 3466e7298b8a5ee1f5d61de9933595b7301efa99
 
 };
 
@@ -113,7 +87,7 @@ $("#glyph").on("click", function(){
 
 	artist = $("#search-input").val().trim();
  $("#artistSpace").empty();
-	var queryURL = "https://api.seatgeek.com/2/events?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
+	var queryURL = "https://cors-anywhere.herokuapp.com/https://api.seatgeek.com/2/events?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
 
 
   console.log(artist);
@@ -154,7 +128,7 @@ placeSearch();
 
 function getGif(){
   console.log("called");
-      var queryURL = "https://api.giphy.com/v1/gifs/search?q=artist%20" + artist + "&rating=pg-13&api_key=dc6zaTOxFJmzC";
+      var queryURL = "https://cors-anywhere.herokuapp.com/https://api.giphy.com/v1/gifs/search?q=artist%20" + artist + "&rating=pg-13&api_key=dc6zaTOxFJmzC";
     $.ajax({
       url: queryURL,
       method: 'GET'
@@ -170,12 +144,7 @@ function getGif(){
         newDiv.append(artistGif);
         
       
-     
-<<<<<<< HEAD
+
  });
 };
-=======
-   });
-};
 
->>>>>>> 3466e7298b8a5ee1f5d61de9933595b7301efa99
