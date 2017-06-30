@@ -22,14 +22,14 @@ var params = {
   }
 }
 
-function startSearch(){
-  $("#first-page").on("click" function(){
-    $("#second-page").empty();
-    flightSearch();
-    // here we will call the function that are needed.
-  });
+// function startSearch(){
+//   $("#first-page").on("click" function(){
+//     $("#second-page").empty();
+//     flightSearch();
+//     // here we will call the function that are needed.
+//   });
   
-}
+// }
 
 
 function flightSearch(){
@@ -44,10 +44,10 @@ function flightSearch(){
 
         }).done((response) => {
          console.log(response);
-         var flightDiv = $("<div>");
-         flightDiv.addClass("flight");
-         flight.text("Flight Place" + --------);
-         $("#second-page").append(flightDiv);
+         // var flightDiv = $("<div>");
+         // flightDiv.addClass("flight");
+         // flight.text("Flight Place" + --------);
+         // $("#second-page").append(flightDiv);
 
 
        });
