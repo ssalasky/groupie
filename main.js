@@ -79,9 +79,11 @@ function airportCode(){
 
 
 $("#glyph").on("click", function(){
-  artist = $("#search-input").val().trim();
 
-  var queryURL = "https://api.seatgeek.com/2/events?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
+	artist = $("#search-input").val().trim();
+ $("#artistSpace").empty();
+	var queryURL = "https://api.seatgeek.com/2/events?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
+
 
   console.log(artist);
 // Javascript validation for search input
@@ -103,7 +105,6 @@ $.ajax({
   console.log(zipCode);
   airportCode();
 
-
 });
 
 }); 
@@ -121,19 +122,24 @@ function placeSearch() {
 placeSearch();
 
 function getGif(){
-  var queryURL = "https://api.giphy.com/v1/gifs/search?q=artist%20" + artist + "&rating=pg-13&api_key=dc6zaTOxFJmzC";
-  $.ajax({
-    url: queryURL,
-    method: 'GET'
-  }).done(function(response) {
-    var newDiv = $("<div>")
-    var artistGif = $("<img>");
-    artistGif.addClass("artistPic");
-    artistGif.attr("src", response.data[0].images.fixed_height.url);
-    moveGif = response.data[0].images.fixed_height.url;
-    stillGif = response.data[0].images.fixed_height_still.url;
+  console.log("called");
+      var queryURL = "https://api.giphy.com/v1/gifs/search?q=artist%20" + artist + "&rating=pg-13&api_key=dc6zaTOxFJmzC";
+    $.ajax({
+      url: queryURL,
+      method: 'GET'
+    }).done(function(response) {
+        var newDiv = $("<div>")
+        var artistGif = $("<img>");
+        artistGif.addClass("artistPic");
+        artistGif.attr("src", response.data[0].images.fixed_height.url);
+        moveGif = response.data[0].images.fixed_height.url;
+        stillGif = response.data[0].images.fixed_height_still.url;
+      
+        $("#artistSpace").append(newDiv);
+        newDiv.append(artistGif);
+        
+      
+     
+   });
+};
 
-    $("#artistSpace").append(newDiv);
-    newDiv.append(".artist-view");   
-
-  });
