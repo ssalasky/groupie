@@ -34,8 +34,8 @@ function startSearch(){
 
 
 
-  $("#search-button").on("click", function(){
-     event.preventDefault();
+  // $("#search-button").on("click", function(){
+  //    event.preventDefault();
 
 function flightSearch(){
 //       //$("#glyph").on("click", function(){
@@ -54,9 +54,9 @@ function flightSearch(){
 //          // flightDiv.addClass("flight");
 //          // flight.html("Flight Place" + ----here we will write the data that we are pulling----);
 //          // $("#second-page").append(flightDiv);
-
   
-       });
+});
+       };
 
 function airportCode(){
 
@@ -79,13 +79,13 @@ function airportCode(){
   }).done(function(response){ 
     console.log(response);
     fromFlight = response.stops[0].airports[0].iata;
-    params.request.slice[0].origin = fromFlight
-    console.log("from " + fromFlight)
+    params.request.slice[0].origin = fromFlight;
+    console.log("from " + fromFlight);
 
 
 
 	})
-   setTimeout(function() { flightSearch(); }, 1000)
+   setTimeout(function() { flightSearch(); }, 1500);
 	
     console.log(params);
     
@@ -122,15 +122,7 @@ var map, infoWindow;
         };
       };
 
-      initMap()
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
+      initMap();
 
     
 
@@ -173,10 +165,11 @@ $("#search-button").on("click", function(){
 
 
   console.log(artist);
+  $("#search-input").val("");
   
-});
-$("#search-input").val("");
+  });
 
+});
 
 
 
@@ -218,4 +211,6 @@ function getGif(){
 
  });
 };
+
+
 
