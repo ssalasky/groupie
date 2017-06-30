@@ -66,15 +66,16 @@ h1 {
 
 }
 #search-input{
-	background-color: white;
+	background-color: #F0F8FF;
 	padding-left: 5px;
 	font-weight: bolder;
-	color: green;
+	/*color: green;*/
 	font-size: 16px;
 	margin-top: 10px;
 	width: 30%;
 	margin-left: 35%;
 }
+
 
 h2 {     
 	padding-bottom: 20px;
@@ -113,6 +114,8 @@ p {
 	/* background-color: #666666;*/
 	background-color: white;
 }
+
+=======
 
 
 /*Map stuff*/
@@ -201,4 +204,5 @@ p {
       .iw_table_icon {
         text-align: right;
       }
+
 
