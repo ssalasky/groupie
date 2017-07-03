@@ -64,7 +64,9 @@ function flightSearch(){
 
 
 
+
         var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs"//AIzaSyDlW31JmWnRfy96JfYhjDQiL2ZQNYB2xkk";
+
         $.ajax({
         url: queryURL,
         headers: {"Content-Type":"application/json"},
@@ -76,6 +78,7 @@ function flightSearch(){
 
         }).done((response) => {
          console.log(response);
+
          var flightPrice1 = response.trips.tripOption[0].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[0].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[0].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
          var flightPrice2 = response.trips.tripOption[1].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[1].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[1].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
          var flightPrice3 = response.trips.tripOption[2].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[2].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[2].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
@@ -91,15 +94,19 @@ function flightSearch(){
          $(".flight4").append("Total Price: $" + flightPrice4.slice(3));
          $(".flight5").append("Total Price: $" + flightPrice5.slice(3));
          $(".flight6").append("Total Price: $" + flightPrice6.slice(3));
+
          // var flightDiv = $("<div>");
          // flightDiv.addClass("flight");
          // flight.text("Flight Place" + --------);
          // $("#second-page").append(flightDiv);
 
 
+
        });
     //});
   };
+
+
 
 
 function airportCode(){
@@ -128,6 +135,7 @@ function airportCode(){
     console.log(response);
     fromFlight = response.stops[0].airports[0].iata;
     params.request.slice[0].origin = fromFlight;
+
     returnFlight1 = response.stops[0].airports[0].iata;
     params.request.slice[1].destination = returnFlight1;
 
