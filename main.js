@@ -87,7 +87,7 @@ function flightSearch(){
          var flightPrice6 = response.trips.tripOption[5].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[5].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[5].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
          var flightLink = "https://www.google.com/flights/#search;f="+fromFlight+";t="+airCode+";d="+date+";r="+fReturn;
          //console.log(flightPrice1);
-         $(".bFlight").append("<a href="+flightLink+"target=_blank><h3>Click to Purchase Flights!<h3></a>");
+         $(".bFlight").append("<a href="+flightLink+"target=_blank>Click to Purchase Flights!</a>");
          $(".flight1").append("Total Price: $" + flightPrice1.slice(3));
          $(".flight2").append("Total Price: $" + flightPrice2.slice(3));
          $(".flight3").append("Total Price: $" + flightPrice3.slice(3));
