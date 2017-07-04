@@ -1,3 +1,23 @@
+var config = {
+    apiKey: "AIzaSyD7Dl_oVcskvGAUxxgm3LwQC_saHWDZlbQ",
+    authDomain: "groupie-project.firebaseapp.com",
+    databaseURL: "https://groupie-project.firebaseio.com",
+    projectId: "groupie-project",
+    storageBucket: "groupie-project.appspot.com",
+    messagingSenderId: "98043513312"
+  };
+ firebase.initializeApp(config);
+ var database = firebase.database();
+$("#search-button").on("click", function(){
+    event.preventDefault();
+    artist = $("#search-input").val();
+//push to the database
+  database.ref().push({
+    artist:artist
+  });
+});
+
+
 var artist = "";
 var hotelArea = "";
 //var airCode ="";
@@ -7,7 +27,14 @@ var params = {
     {
       origin: "",
       destination: "",
-      date: ""
+      date: "",
+      maxStops: 1
+    },
+     {
+      origin: "",
+      destination: "",
+      date: "",
+      maxStops: 1
     }
     ],
     passengers: {
@@ -22,11 +49,11 @@ var params = {
   }
 }
 
-// function startSearch(){
-//     $("#second-page").empty();
+function startSearch(){
+    $("#first-page").empty();
 //     flightSearch();
 //     // here we will call the function that are needed.
-//   });
+  };
   
 // }
 
@@ -35,7 +62,10 @@ function flightSearch(){
 
 
 
-        var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyDlW31JmWnRfy96JfYhjDQiL2ZQNYB2xkk";
+
+
+        var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs"//AIzaSyDlW31JmWnRfy96JfYhjDQiL2ZQNYB2xkk";
+
         $.ajax({
         url: queryURL,
         headers: {"Content-Type":"application/json"},
@@ -47,27 +77,52 @@ function flightSearch(){
 
         }).done((response) => {
          console.log(response);
+
+         var flightPrice1 = response.trips.tripOption[0].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[0].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[0].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
+         var flightPrice2 = response.trips.tripOption[1].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[1].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[1].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
+         var flightPrice3 = response.trips.tripOption[2].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[2].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[2].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
+         var flightPrice4 = response.trips.tripOption[3].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[3].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[3].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
+         var flightPrice5 = response.trips.tripOption[4].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[4].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[4].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
+         var flightPrice6 = response.trips.tripOption[5].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[5].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[5].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
+         var flightLink = "https://www.google.com/flights/#search;f="+fromFlight+";t="+airCode+";d="+date+";r="+fReturn;
+         //console.log(flightPrice1);
+         $(".bFlight").append("<a href="+flightLink+"target=_blank>Click to Purchase Flights!</a>");
+         $(".flight1").append("Total Price: $" + flightPrice1.slice(3));
+         $(".flight2").append("Total Price: $" + flightPrice2.slice(3));
+         $(".flight3").append("Total Price: $" + flightPrice3.slice(3));
+         $(".flight4").append("Total Price: $" + flightPrice4.slice(3));
+         $(".flight5").append("Total Price: $" + flightPrice5.slice(3));
+         $(".flight6").append("Total Price: $" + flightPrice6.slice(3));
+
          // var flightDiv = $("<div>");
          // flightDiv.addClass("flight");
          // flight.text("Flight Place" + --------);
          // $("#second-page").append(flightDiv);
 
 
+
        });
     //});
   };
 
+
+
+
 function airportCode(){
 
-	var queryURL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zipCode
-	$.ajax({
-		url: queryURL,
-		method: "GET"
-	}).done(function(response){
-		console.log(response);
-		airCode = response.stops[0].airports[0].iata;
-		params.request.slice[0].destination = airCode;
-		console.log("new Dest " + airCode);
+  var queryURL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zipCode
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).done(function(response){
+    console.log(response);
+    airCode = response.stops[0].airports[0].iata;
+    params.request.slice[0].destination = airCode;
+    returnFlight2 = response.stops[0].airports[0].iata;
+    params.request.slice[1].origin = returnFlight2; 
+    
+    console.log("new Dest " + airCode);
+    console.log("help " + returnFlight2);
 
   });
 
@@ -78,34 +133,22 @@ function airportCode(){
   }).done(function(response){ 
     console.log(response);
     fromFlight = response.stops[0].airports[0].iata;
-    params.request.slice[0].origin = fromFlight
-    console.log("from " + fromFlight)
+    params.request.slice[0].origin = fromFlight;
+
+    returnFlight1 = response.stops[0].airports[0].iata;
+    params.request.slice[1].destination = returnFlight1;
+
+    console.log("from " + fromFlight);
+    console.log("way back " + returnFlight1);
 
 
   });
 
-  var URL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zips
-  $.ajax({
-    url: URL,
-    method: "GET"
-  }).done(function(response){ 
-    console.log(response);
-    fromFlight = response.stops[0].airports[0].iata;
-    params.request.slice[0].origin = fromFlight
-    console.log("from " + fromFlight)
 
-
-
-  })
   
-    console.log(params);
-    flightSearch();
-
-
-
-	})
-   setTimeout(function() { flightSearch(); }, 1000)
-	
+  
+   setTimeout(function() { flightSearch(); }, 1500);
+  
     console.log(params);
     
 
@@ -132,18 +175,9 @@ var map, infoWindow;
             console.log(response);
             console.log(lat);
             console.log(long);
-            zips = response.results[0].address_components[7].long_name;
+            zips = response.results[0].address_components[6].long_name;
             console.log("hey " + zips);
 
-
-          });
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
 
           });
 
@@ -151,23 +185,11 @@ var map, infoWindow;
       });
         };
       };
+     
 
-      initMap()
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
+      initMap();
 
     
-
-
-
-$("#search-button").on("click", function(){
-
 
 
 
@@ -179,9 +201,9 @@ $("#search-button").on("click", function(){
 
 
 
-	if(!artist) {
-		return false
-	}
+  if(!artist) {
+    return false
+  }
 
 
 
@@ -198,21 +220,25 @@ $("#search-button").on("click", function(){
     zipCode = response.events[0].venue.postal_code;
     console.log(zipCode);
     console.log(hotelArea);
-    date = moment(response.events[0].datetime_local).format('YYYY-MM-DD');
-  params.request.slice[0].date = date
+    date = moment(response.events[0].datetime_local).subtract(1, "days").format('YYYY-MM-DD');
+    params.request.slice[0].date = date;
+    fReturn = moment(response.events[0].datetime_local).add(1, "days").format('YYYY-MM-DD');
+    params.request.slice[1].date = fReturn;
   console.log(date)
 
-	airportCode();
+  airportCode();
   startSearch();
 
   getGif();
 
   console.log(artist);
+  $("#search-input").val("");
   
-});
-$("#search-input").val("");
+  });
+
 
 }); 
+
 
 
 function placeSearch() {
@@ -264,6 +290,3 @@ function getGif(){
 //     console.log(response)
 //   })
 // }
-
-
-
