@@ -6,9 +6,8 @@
 	<title>Event Finder</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<!--  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEm5tj57kkgZxxt2yPcF3MZO8fYR4nxHA&libraries=places&callback=initMap"
-        async defer></script> -->
        
 </head>
 <body>
@@ -38,22 +37,32 @@
 	<!-- Map stuff starts -->
 
 <div id="map"></div>
+	<div class= "row seatgeek">
+		<div class= "col s1">
+		</div>
+	</div>
+	<div class="row bFlight center-align"></div>
+	<div class="row flights center-align">
+		<div class="col s2 flight1 flight center-align"></div>
+		<div class="col s2 flight2 flight center-align"></div>
+		<div class="col s2 flight3 flight center-align"></div>
+		<div class="col s2 flight4 flight center-align"></div>
+		<div class="col s2 flight5 flight center-align"></div>
+		<div class="col s2 flight6 flight center-align"></div>
+	</div>
 
-    <!-- Map stuff ends -->
-
-	
-	<!-- 	main body where our flights and hotels will be displayed -->
+ <div id="noArtist"></div>
 
 	<div id="second-page"></div>
+	<div class="row" id="artistSpace"></div>
 
 	<script type="text/javascript" src="main.js"></script>
 
 	<div class="footer">
 		Copyright &copy; 2017 Adam, Daniel, Hayelom,Sam
 	</div>
+
 </footer>
 </body>
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBao5t2cXEN-W6a_Mw0JBIUlifRXiSaLaM&callback=initMap"
-  type="text/javascript"></script> -->
 </html>
