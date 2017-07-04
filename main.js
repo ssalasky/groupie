@@ -226,7 +226,7 @@ $("#search-button").on("click", function(){
       
       $("#first-page").empty();
       $("#noArtist").text("Sorry " + artist + " is not performing anytime soon... Try another artist.");
-      var queryURL = "https://cors-anywhere.herokuapp.com/https://api.giphy.com/v1/gifs/search?q=sorry&rating=pg-13&api_key=dc6zaTOxFJmzC";
+      var queryURL = "https://cors-anywhere.herokuapp.com/https://api.giphy.com/v1/gifs/search?q=sorry-taylor-swift&rating=pg-13&api_key=dc6zaTOxFJmzC";
 
     $.ajax({
       url: queryURL,
@@ -235,7 +235,7 @@ $("#search-button").on("click", function(){
         var newDiv = $("<div>")
         var artistGif = $("<img>");
         artistGif.addClass("col s6 offset-s3");
-        artistGif.attr("src", response.data[0].images.fixed_height.url);
+        artistGif.attr("src", response.data[1].images.fixed_height.url);
         $("#noArtist").append(newDiv);
         newDiv.append(artistGif);
         
