@@ -21,6 +21,9 @@ $("#search-button").on("click", function(){
 
 var artist = "";
 var hotelArea = "";
+var venueName = "";
+var areaLocation = "";
+var website = "";
 //var airCode ="";
 var params = {
   request: {
@@ -49,6 +52,7 @@ var params = {
     refundable: false
   }
 }
+
 
 function startSearch(){
     $("#first-page").empty();
@@ -215,8 +219,19 @@ $("#search-button").on("click", function(){
     method: 'GET'
   }).done(function(response) {
     console.log(response);
+    if(response.events[0] === undefined){
+      
+      $("#first-page").empty();
+      $("#noArtist").text("Sorry " + artist + " is not performing anytime soon... Try another artist.");
+
+    }
+    else {
+    $("#noArtist").empty();
     hotelArea = response.events[0].venue.display_location;
-    var location = response.events[0].venue.city;
+    areaLocation = response.events[0].venue.city;
+    venueName = response.events[0].venue.name;
+    console.log(venueName);
+    website = response.events[0].url;
     var upcomingEvents = response.events[0].has_upcoming_events;
     zipCode = response.events[0].venue.postal_code;
     console.log(zipCode);
@@ -234,7 +249,7 @@ $("#search-button").on("click", function(){
 
   console.log(artist);
   $("#search-input").val("");
-  
+  }
   });
 
 
@@ -260,7 +275,7 @@ placeSearch();
 function getGif(){
   console.log("called");
   
-      var queryURL = "https://cors-anywhere.herokuapp.com/https://api.giphy.com/v1/gifs/search?q=artist%20" + artist + "&rating=pg-13&api_key=dc6zaTOxFJmzC";
+      var queryURL = "https://cors-anywhere.herokuapp.com/https://api.giphy.com/v1/gifs/search?q=" + artist + "&rating=pg-13&api_key=dc6zaTOxFJmzC";
 
     $.ajax({
       url: queryURL,
@@ -268,11 +283,11 @@ function getGif(){
     }).done(function(response) {
         var newDiv = $("<div>")
         var artistGif = $("<img>");
-        artistGif.addClass("artistPic");
+        artistGif.addClass("col s6 offset-s3");
         artistGif.attr("src", response.data[0].images.fixed_height.url);
         moveGif = response.data[0].images.fixed_height.url;
         stillGif = response.data[0].images.fixed_height_still.url;
-      
+        $("#artistSpace").html("<h2> Sweet! " + artist + " will be performing soon on " + date + " in " + areaLocation + " at the " + venueName + "<a href=" + website + " " + "target='_blank'" + "> Click here to purchase tickets.</a></h2>");
         $("#artistSpace").append(newDiv);
         newDiv.append(artistGif);
         
@@ -290,4 +305,4 @@ function getGif(){
 //   }).done(function(response){
 //     console.log(response)
 //   })
-// }
+
