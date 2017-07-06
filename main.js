@@ -19,17 +19,6 @@ $("#search-button").on("click", function(){
   });
 });
 $("#loadingScreen").hide();
-
-var config = {
-    apiKey: "AIzaSyD7Dl_oVcskvGAUxxgm3LwQC_saHWDZlbQ",
-    authDomain: "groupie-project.firebaseapp.com",
-    databaseURL: "https://groupie-project.firebaseio.com",
-    projectId: "groupie-project",
-    storageBucket: "groupie-project.appspot.com",
-    messagingSenderId: "98043513312"
-  };
- firebase.initializeApp(config);
- var database = firebase.database();
 $("#search-button").on("click", function(){
     event.preventDefault();
     artist = $("#search-input").val();
