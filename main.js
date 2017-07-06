@@ -1,5 +1,6 @@
 
 $("#loadingScreen").hide();
+
 var config = {
     apiKey: "AIzaSyD7Dl_oVcskvGAUxxgm3LwQC_saHWDZlbQ",
     authDomain: "groupie-project.firebaseapp.com",
