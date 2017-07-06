@@ -19,17 +19,6 @@ $("#search-button").on("click", function(){
   });
 });
 $("#loadingScreen").hide();
-$("#search-button").on("click", function(){
-    event.preventDefault();
-    artist = $("#search-input").val();
-//push to the database
-  database.ref().push({
-    artist:artist
-  });
-});
-
-
-
 var t;
 var artist = "";
 var hotelArea = "";
