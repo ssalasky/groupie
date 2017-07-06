@@ -1,124 +1,161 @@
-
 body {
-	background-color: blue-grey;
-	font-family: "Times New Roman", Georgia, Serif;
-	background-image: url("images/party.jpg");
+  background-color: blue-grey;
+  font-family: "Times New Roman", Georgia, Serif;
+  background-image: url("images/party.jpg");
+
 
 
 }
 h5 {
 	text-align: center;
 }
+h5 {
+  text-align: center;
+}
 
 .btn, .btn-large {
-	float: right;
-	margin-top: -70px;
-	text-decoration: none;
-	color: #fff;
-	background-color: #26a69a;
-	text-align: center;
-	letter-spacing: .5px;
-	transition: .2s ease-out;
-	cursor: pointer;
+  float: right;
+  margin-top: -70px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #26a69a;
+  text-align: center;
+  letter-spacing: .5px;
+  transition: .2s ease-out;
+  cursor: pointer;
 }
 
 .navbar-default {
-	margin: 20px;
-	background-color: #708090;
+  margin: 20px;
+  background-color: #708090;
 
 }
 
 .first-p{
-	color: red;
+  color: red;
 }
 
 first-h2 {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 .name {
-	/*margin-left: 0px;*/
-	/*color: #ffffff;*/
-	background-color: white;
-	color: black;
-	/*margin-top: -20px;*/
+  /*margin-left: 0px;*/
+  /*color: #ffffff;*/
+  background-color: white;
+  color: black;
+  /*margin-top: -20px;*/
 }
 .navbar-right {
-	margin-right: 15px;
+  margin-right: 15px;
 }
 
 li {
-	position: absolute;
-	margin-right: 10px;
-	color: white;
+  position: absolute;
+  margin-right: 10px;
+  color: white;
 }
 
 h1 {
-	text-align: center;
-	line-height: 100%;
+  text-align: center;
+  line-height: 100%;
 }
 
 
 #search-button {
-	position: absolute;
-	float: right;
-	margin-right: 25%;
-	margin-top: 0.8%;
+  position: absolute;
+  float: right;
+  margin-right: 25%;
+  margin-top: 0.8%;
 }
 .btn-info{
-	padding-top: 11px;
-	padding-bottom: 35px;
+  padding-top: 11px;
+  padding-bottom: 35px;
 
 }
 #search-input{
-	background-color: #F0F8FF;
-	padding-left: 5px;
-	font-weight: bolder;
-	/*color: green;*/
-	font-size: 16px;
-	margin-top: 10px;
-	width: 30%;
-	margin-left: 35%;
+  background-color: #F0F8FF;
+  padding-left: 5px;
+  font-weight: bolder;
+  /*color: green;*/
+  font-size: 16px;
+  margin-top: 10px;
+  width: 30%;
+  margin-left: 35%;
 }
 
 
 h2 {     
-	padding-bottom: 20px;
-	color: #5d4037;
-	font-family: 'Lobster', cursive;
-	margin-top: -10px;
-	text-align: center;
-	text-decoration: none;
-	font-weight: bold;
+  padding-bottom: 20px;
+  color: #5d4037;
+  font-family: 'Lobster', cursive;
+  margin-top: -10px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
 }
 label{
-	color: #2e7d32;
-	font-size: 40px;
-	margin-left: 40%;
+  color: #2e7d32;
+  font-size: 40px;
+  margin-left: 40%;
 
 
 }
 
 p {
-	margin-left: 5%;
-	font-family: 'Lobster', cursive;
-	font-size: 18px;
-	text-align: center;
+  margin-left: 5%;
+  font-family: 'Lobster', cursive;
+  font-size: 18px;
+  text-align: center;
+
 }
 
 .footer {
-	position: fixed;
-	bottom: 0;
-	padding-top: 15px;
-	/*  color: white;*/
-	color:black;
-	width: 100%;
-	text-align: center;
-	/* Set the fixed height of the footer here */
-	height: 50px;
-	/* background-color: #666666;*/
-	background-color: white;
+  position: fixed;
+  bottom: 0;
+  padding-top: 15px;
+  /*  color: white;*/
+  color:black;
+  width: 100%;
+  text-align: center;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+  /* background-color: #666666;*/
+  background-color: white;
 }
 
+#loadingScreen{
+
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+#dadJoke {
+  font-size: 16pt;
+} 
+#noArtist {
+  font-size: 16pt;
+  text-align: center;
+}
+@media screen and (max-width: 768px){
+  .name{
+    margin-right: 280px;
+  }
+
+  label {
+
+
+    font-size: 35px;
+    margin-left: 15%;
+  }
+  #search-input{
+    width: 40%;
+    margin-left: 3%;
+  }
+  p{
+    padding-right: 40%;
+  }
+  h2{
+     margin-right: 300px;
 #loadingScreen{
 
 	width: 100%;
@@ -156,63 +193,70 @@ p {
     margin-top: 1%;
 }
 .footer{
-	text-align: left;
-	padding-left: 15%;
-	
+  text-align: left;
+  padding-left: 15%;
+  
+
 
 }
 
 }
 @media screen and (max-width: 414px){
 
-label {
+
+  label {
     font-size: 20px;
-    margin-left: 25%;
-}
-.name{
-padding-right: 100px;
-}
-h2{
-	margin-right: 80px;
-	font-size: 18px;
-}
-p{
-	margin-right: 100px;
-}
-#search-input{
-	width: 40%;
-    margin-left: 5%;
-     margin-top: 1.5%;
-}
-.footer{
-	padding-right: 30%;
-}
+    margin-left: 10%;
+  }
+  .name{
+    padding-right: 220px;
+  }
+  h2{
+    margin-top: 10px;
+    margin-right: 160px;
+    font-size: 18px;
+  }
+  p{
+    font-size: 10px;
+  }
+  #search-input{
+    width: 32%;
+    margin-left: 1%;
+    margin-top: 1.5%;
+  }
+  .footer{
+    padding-right: 30%;
+  }
+
 }
 
 @media screen and (max-width: 375px) {
   .name {
-  	margin-right: 100px;
+
+    margin-right: 100px;
     padding-right: 40%;
-    padding-left: 10%;
+
   }
 
   label{
 
-    font-size: 16px;
-    margin-left: 25%;
+
+    font-size: 14px;
+    margin-left: 15%;
   }
 
   h2{
-  	margin-right: 15%;
+    margin-right: 40%;
+
     font-size: 16px;
     line-height: 50%;
     padding-bottom: 10px;
   }
   p{
-    margin-right: 100px;
+
+
     margin-bottom: 20px;
-    font-size: 12px;
-   /* text-align: center;*/
+
   }
   #search-button {
     position: absolute;
@@ -228,7 +272,9 @@ p{
     padding-bottom: 5px;
     font-size: 16px;
     margin-top: 8px;
-    width: 50%;
+
+    width: 32%;
+
     margin-left: 1%;
   }
 
@@ -237,8 +283,10 @@ p{
     margin-left: 20px;
   }
   .footer{
-  	font-size: 10px;
-  	padding-right: 30%
+
+    font-size: 10px;
+    padding-right: 30%
+
   }
 
 }
@@ -331,5 +379,3 @@ p{
         text-align: right;
       }
 
-
-*/
