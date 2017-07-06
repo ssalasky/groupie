@@ -68,11 +68,6 @@ function startSearch(){
 
 function flightSearch(){
         var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs"//AIzaSyDlW31JmWnRfy96JfYhjDQiL2ZQNYB2xkk";
-
-
-
-        var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs"//AIzaSyDlW31JmWnRfy96JfYhjDQiL2ZQNYB2xkk";
-
         $.ajax({
         url: queryURL,
         headers: {"Content-Type":"application/json"},
