@@ -10,13 +10,24 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
        
 </head>
+<!-- loading screen -->
+
+	<div id="loadingScreen" class="row col s12" >
+  <img class="col s2 offset-s5" src="images/169.gif">
+  <div class="row col s12"><p>"Please enjoy this dad joke while we load your results."</p></div>
+  <div class = "row col s4 offset-s4" id="dadJoke"></div>
+  </div>
 <body>
+
 	<!-- nav bar for the head where that will have a context for the comppany -->
+<div id="whole">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid ">
 			<h1 class="name"> Groupie</h1>
 		</div>
 	</nav>
+
+
 	<!-- 	first page display that will show what this page is for. -->
 	<div id="first-page">
 		<label id"search-input">Start Your Fun Here</label>
@@ -24,7 +35,7 @@
 		<h2 class="first-h2"> Events, Flights, Hotels, </h2>
 		<h2>& So Much More...</h2>
 	</div>
-
+		
 
 	<div class="button-box">
 		<input placeholder="type the band/artist here" id="search-input" type="text" class="validate">
@@ -56,12 +67,14 @@
 	<div id="second-page"></div>
 	<div class="row" id="artistSpace"></div>
 
+
+
 	<script type="text/javascript" src="main.js"></script>
 
 	<div class="footer">
 		Copyright &copy; 2017 Adam, Daniel, Hayelom, Sam
 	</div>
-
+</div>
 </footer>
 </body>
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
