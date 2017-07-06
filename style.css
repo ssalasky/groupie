@@ -136,13 +136,14 @@ p {
   font-size: 16pt;
   text-align: center;
 }
+
 @media screen and (max-width: 768px){
-	.name{
-		margin-right: 50px;
-	}
-	p{
-		margin-right: 200px;
-	}
+  .name{
+    margin-right: 50px;
+  }
+  p{
+    margin-right: 200px;
+  }
   label {
 
     font-size: 35px;
@@ -153,7 +154,7 @@ p {
     margin-left: 10%;
   }
   h2{
-  	 margin-right: 200px;
+     margin-right: 200px;
     font-size: 20px;
   }
   #search-button {
@@ -169,8 +170,6 @@ p {
 
 }
 @media screen and (max-width: 414px){
-
-
   label {
     font-size: 20px;
   }
@@ -179,9 +178,11 @@ p {
     margin-right: 20px;
     font-size: 18px;
   }
-  p{
+  p {
  font-size: 12px;
- margin-left: 30%;
+  margin-right: 140px;
+  padding-left: 20px;
+
   }
   #search-input{
     width: 62%;
@@ -203,33 +204,33 @@ font-size: 12px;
   }
 
   label{
-
-
     font-size: 14px;
-    margin-left: 15%;
+    margin-left: 30%;
   }
 
-  h2{
-    margin-right: 40%;
+  h2 {
+    margin-right: 20%;
     font-size: 16px;
     line-height: 50%;
     padding-bottom: 10px;
   }
-  p{
+  p {
+    
+  font-size: 12px;
+  margin-right: 140px;
+  padding-left: 40px;
+/*    margin-bottom: 20px;*/
 
-
-    margin-bottom: 20px;
 
   }
+
   #search-input {
      padding-left: 5px;
     font-weight: bolder;
     padding-bottom: 5px;
     font-size: 16px;
     margin-top: 8px;
-
     width: 52%;
-
     margin-left: 10%;
   }
 
@@ -245,8 +246,6 @@ font-size: 12px;
   }
 
 }
-
-
 /*Map stuff*/
 
 /*#map {
