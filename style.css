@@ -137,41 +137,8 @@ p {
   text-align: center;
 }
 @media screen and (max-width: 768px){
-  .name{
-    margin-right: 280px;
-  }
-
-  label {
-
-
-    font-size: 35px;
-    margin-left: 15%;
-  }
-  #search-input{
-    width: 40%;
-    margin-left: 3%;
-  }
-  p{
-    padding-right: 40%;
-  }
-  h2{
-     margin-right: 300px;
-#loadingScreen{
-
-	width: 100%;
-	height: 100%;
-	z-index: 10;
-}
-#dadJoke {
-	font-size: 16pt;
-}	
-#noArtist {
-	font-size: 16pt;
-	text-align: center;
-}
-@media screen and (max-width: 768px){
 	.name{
-		margin-right: 200px;
+		margin-right: 50px;
 	}
 	p{
 		margin-right: 200px;
