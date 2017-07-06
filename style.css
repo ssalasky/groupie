@@ -132,6 +132,116 @@ p {
 	font-size: 16pt;
 	text-align: center;
 }
+@media screen and (max-width: 768px){
+	.name{
+		margin-right: 200px;
+	}
+	p{
+		margin-right: 200px;
+	}
+  label {
+
+    font-size: 35px;
+    margin-left: 20%;
+  }
+  #search-input{
+    width: 40%;
+    margin-left: 10%;
+  }
+  h2{
+  	 margin-right: 200px;
+    font-size: 20px;
+  }
+  #search-button {
+    margin-top: 1%;
+}
+.footer{
+	text-align: left;
+	padding-left: 15%;
+	
+
+}
+
+}
+@media screen and (max-width: 414px){
+
+label {
+    font-size: 20px;
+    margin-left: 25%;
+}
+.name{
+padding-right: 100px;
+}
+h2{
+	margin-right: 80px;
+	font-size: 18px;
+}
+p{
+	margin-right: 100px;
+}
+#search-input{
+	width: 40%;
+    margin-left: 5%;
+     margin-top: 1.5%;
+}
+.footer{
+	padding-right: 30%;
+}
+}
+
+@media screen and (max-width: 375px) {
+  .name {
+  	margin-right: 100px;
+    padding-right: 40%;
+    padding-left: 10%;
+  }
+
+  label{
+
+    font-size: 16px;
+    margin-left: 25%;
+  }
+
+  h2{
+  	margin-right: 15%;
+    font-size: 16px;
+    line-height: 50%;
+    padding-bottom: 10px;
+  }
+  p{
+    margin-right: 100px;
+    margin-bottom: 20px;
+    font-size: 12px;
+   /* text-align: center;*/
+  }
+  #search-button {
+    position: absolute;
+    float: right;
+    margin-right: 25%;
+    margin-top: 2%;
+    margin-left: 0.5%;
+  }
+
+  #search-input {
+    padding-left: 5px;
+    font-weight: bolder;
+    padding-bottom: 5px;
+    font-size: 16px;
+    margin-top: 8px;
+    width: 50%;
+    margin-left: 1%;
+  }
+
+  .airport{
+    color: white;
+    margin-left: 20px;
+  }
+  .footer{
+  	font-size: 10px;
+  	padding-right: 30%
+  }
+
+}
 
 
 /*Map stuff*/
