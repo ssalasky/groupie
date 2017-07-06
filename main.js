@@ -18,6 +18,27 @@ $("#search-button").on("click", function(){
     artist:artist
   });
 });
+$("#loadingScreen").hide();
+
+var config = {
+    apiKey: "AIzaSyD7Dl_oVcskvGAUxxgm3LwQC_saHWDZlbQ",
+    authDomain: "groupie-project.firebaseapp.com",
+    databaseURL: "https://groupie-project.firebaseio.com",
+    projectId: "groupie-project",
+    storageBucket: "groupie-project.appspot.com",
+    messagingSenderId: "98043513312"
+  };
+ firebase.initializeApp(config);
+ var database = firebase.database();
+$("#search-button").on("click", function(){
+    event.preventDefault();
+    artist = $("#search-input").val();
+//push to the database
+  database.ref().push({
+    artist:artist
+  });
+});
+
 
 
 var t;
@@ -32,6 +53,7 @@ var params = {
     slice: [
     {
       origin: "",
+
       destination: "",
       date: "",
       maxStops: 1
@@ -67,8 +89,7 @@ function startSearch(){
 
 
 function flightSearch(){
-
-
+        var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs"//AIzaSyDlW31JmWnRfy96JfYhjDQiL2ZQNYB2xkk";
 
 
 
@@ -79,10 +100,6 @@ function flightSearch(){
         headers: {"Content-Type":"application/json"},
         data: JSON.stringify(params),
         method: "POST"
-
-
-        
-
         }).done((response) => {
          console.log(response);
 
@@ -152,15 +169,10 @@ function airportCode(){
 
   });
 
-
-  
-  
    setTimeout(function() { flightSearch(); }, 1500);
   
     console.log(params);
     
-
-
 };
 
 
@@ -184,25 +196,11 @@ var map, infoWindow;
             console.log(lat);
             console.log(long);
             zips = response.results[0].address_components[6].long_name;
-            console.log("hey " + zips);
-
-
-          });
-
-           
+            console.log("hey " + zips);   
       });
         };
       };
-     
-
-      initMap();
-
-    
-
-
-
 $("#search-button").on("click", function(){
-
   artist = $("#search-input").val().trim();
  $("#artistSpace").empty();
   var queryURL = "https://cors-anywhere.herokuapp.com/https://api.seatgeek.com/2/events?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
@@ -275,6 +273,7 @@ $("#search-button").on("click", function(){
   }
   });
 
+}); 
 
 }); 
 
@@ -338,11 +337,12 @@ function loading() {
 
 function time(){
   t = setTimeout(clearout, 6000)
-
-
 }
 function clearout(){
   $("#loadingScreen").hide();
   $("#whole").show();
 
 }
+
+
+

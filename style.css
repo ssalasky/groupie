@@ -4,6 +4,10 @@ body {
   background-image: url("images/party.jpg");
 
 
+
+}
+h5 {
+	text-align: center;
 }
 h5 {
   text-align: center;
@@ -139,6 +143,7 @@ p {
 
   label {
 
+
     font-size: 35px;
     margin-left: 15%;
   }
@@ -151,6 +156,37 @@ p {
   }
   h2{
      margin-right: 300px;
+#loadingScreen{
+
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+}
+#dadJoke {
+	font-size: 16pt;
+}	
+#noArtist {
+	font-size: 16pt;
+	text-align: center;
+}
+@media screen and (max-width: 768px){
+	.name{
+		margin-right: 200px;
+	}
+	p{
+		margin-right: 200px;
+	}
+  label {
+
+    font-size: 35px;
+    margin-left: 20%;
+  }
+  #search-input{
+    width: 40%;
+    margin-left: 10%;
+  }
+  h2{
+  	 margin-right: 200px;
     font-size: 20px;
   }
   #search-button {
@@ -161,10 +197,12 @@ p {
   padding-left: 15%;
   
 
+
 }
 
 }
 @media screen and (max-width: 414px){
+
 
   label {
     font-size: 20px;
@@ -189,15 +227,19 @@ p {
   .footer{
     padding-right: 30%;
   }
+
 }
 
 @media screen and (max-width: 375px) {
   .name {
+
     margin-right: 100px;
     padding-right: 40%;
+
   }
 
   label{
+
 
     font-size: 14px;
     margin-left: 15%;
@@ -205,13 +247,16 @@ p {
 
   h2{
     margin-right: 40%;
+
     font-size: 16px;
     line-height: 50%;
     padding-bottom: 10px;
   }
   p{
 
+
     margin-bottom: 20px;
+
   }
   #search-button {
     position: absolute;
@@ -227,7 +272,9 @@ p {
     padding-bottom: 5px;
     font-size: 16px;
     margin-top: 8px;
+
     width: 32%;
+
     margin-left: 1%;
   }
 
@@ -236,8 +283,10 @@ p {
     margin-left: 20px;
   }
   .footer{
+
     font-size: 10px;
     padding-right: 30%
+
   }
 
 }
@@ -329,4 +378,4 @@ p {
       .iw_table_icon {
         text-align: right;
       }
-*/
+
