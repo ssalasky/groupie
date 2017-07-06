@@ -1,4 +1,5 @@
 
+$("#loadingScreen").hide();
 var config = {
     apiKey: "AIzaSyD7Dl_oVcskvGAUxxgm3LwQC_saHWDZlbQ",
     authDomain: "groupie-project.firebaseapp.com",
@@ -19,6 +20,7 @@ $("#search-button").on("click", function(){
 });
 
 
+var t;
 var artist = "";
 var hotelArea = "";
 var venueName = "";
@@ -56,6 +58,7 @@ var params = {
 
 function startSearch(){
     $("#first-page").empty();
+    loading();
 //     flightSearch();
 //     // here we will call the function that are needed.
   };
@@ -315,14 +318,32 @@ function getGif(){
 
  });
 };
-// function dadJoke() {
-//   console.log('dad');
-//   var queryURL ="https://icanhazdadjoke.com/j/";
-//   $.ajax({
-//     Accept: "application/json",
-//     url: queryURL,
-//     method: 'GET'
-//   }).done(function(response){
-//     console.log(response)
-//   })
+function dadJoke() {
+  var queryURL ="https://icanhazdadjoke.com/slack";
+  $.ajax({
+    url: queryURL,
+    method: 'GET'
+  }).done(function(response){
+    var joke = response.attachments[0].text;
+    $("#dadJoke").text(joke);
+
+  });
+}
+function loading() {
+  dadJoke();
+  $("#whole").hide();
+  $("#loadingScreen").show();
+  time();
+}
+
+function time(){
+  t = setTimeout(clearout, 6000)
+
+
+}
+function clearout(){
+  $("#loadingScreen").hide();
+  $("#whole").show();
+
+}
 
