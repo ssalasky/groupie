@@ -161,13 +161,16 @@ p {
 
 }
 @media screen and (max-width: 414px){
+  .name {
+    margin-right: 160px;
+  }
   label {
     font-size: 20px;
   }
   h2{
     margin-top: 10px;
-    margin-right: 20px;
-    font-size: 18px;
+    margin-right: 80px;
+    font-size: 12px;
   }
   p {
  font-size: 12px;
