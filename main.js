@@ -8,11 +8,8 @@ var config = {
   storageBucket: "groupie-project.appspot.com",
   messagingSenderId: "98043513312"
 };
-
 firebase.initializeApp(config);
-
 var database = firebase.database();
-
 var t;
 var artist = "";
 var hotelArea = "";
@@ -63,7 +60,6 @@ function startSearch(){
   $("#first-page").empty();
   loading();
 };
-
 function flightSearch(){
   var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyBao5t2cXEN-W6a_Mw0JBIUlifRXiSaLaM"  
   //AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs"//AIzaSyDlW31JmWnRfy96JfYhjDQiL2ZQNYB2xkk";
@@ -73,7 +69,6 @@ function flightSearch(){
     data: JSON.stringify(params),
     method: "POST"
   }).done((response) => {
-
    var flightPrice1 = response.trips.tripOption[0].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[0].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[0].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
    var flightPrice2 = response.trips.tripOption[1].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[1].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[1].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
    var flightPrice3 = response.trips.tripOption[2].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[2].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[2].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
@@ -94,7 +89,6 @@ function flightSearch(){
 
 function airportCode(){
   var queryURL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zipCode
- 
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -107,9 +101,7 @@ function airportCode(){
    //console.log("new Dest " + airCode);
     console.log("help " + returnFlight2);
  });
-
   var URL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zips
-  
   $.ajax({
     url: URL,
     method: "GET"
@@ -121,14 +113,10 @@ function airportCode(){
     returnFlight = params.request.slice[1].destination;
     // console.log("from " + fromFlight);
     // console.log("way back " + returnFlight1);
-
   });
-
   setTimeout(function() { flightSearch(); }, 1500);
   // console.log(params); 
 };
-
-
 function initMap() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -139,7 +127,6 @@ function initMap() {
       var lat = pos.lat;
       var long = pos.lng;
       var queryURL ="https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+long+"&key=AIzaSyBao5t2cXEN-W6a_Mw0JBIUlifRXiSaLaM";
-        
       $.ajax({
         url: queryURL,
         method: "GET"
@@ -235,11 +222,9 @@ function placeSearch() {
         $("#hotelSpace").append(newRow);
       });
     };
-
     //console.log(placeID);
   });
 };
-
 function getGif(){
   console.log("called");
    var queryURL = "https://cors-anywhere.herokuapp.com/https://api.giphy.com/v1/gifs/search?q=" + artist + "&rating=pg-13&api_key=dc6zaTOxFJmzC";
@@ -255,24 +240,19 @@ function getGif(){
     stillGif = response.data[0].images.fixed_height_still.url;
     $("#artistSpace").html("<h2> Sweet! " + artist + " will be performing soon on " + date + " in " + areaLocation + " at the " + venueName + "<a href=" + website + " " + "target='_blank'" + "> Click here to purchase tickets.</a></h2>");
     $("#artistSpace").append(newDiv);
-
     newDiv.append(artistGif);
  });
 };
-
 function dadJoke() {
   var queryURL ="https://icanhazdadjoke.com/slack";
-
   $.ajax({
     url: queryURL,
     method: 'GET'
   }).done(function(response){
     var joke = response.attachments[0].text;
     $("#dadJoke").text(joke);
-
   });
 };
-
 function loading() {
   dadJoke();
   $("#whole").hide();
