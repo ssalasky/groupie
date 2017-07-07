@@ -28,14 +28,14 @@ var params = {
   request: {
     slice: [
     {
-      origin: "DEN",
+      origin: "",
       destination: "",
       date: "",
       maxStops: 1
     },
     {
       origin: "",
-      destination: "DEN",
+      destination: "",
       date: "",
       maxStops: 1
     }
@@ -117,16 +117,16 @@ function airportCode(){
   }).done(function(response){ 
     console.log(response);
     fromFlight = response.stops[0].airports[0].iata;
-    fromFlight = params.request.slice[0].origin;
+    params.request.slice[0].origin = fromFlight;
     returnFlight1 = response.stops[0].airports[0].iata;
-    returnFlight = params.request.slice[1].destination;
-    // console.log("from " + fromFlight);
-    // console.log("way back " + returnFlight1);
+    params.request.slice[1].destination = returnFlight1;
+    console.log("from " + fromFlight);
+    console.log("way back " + returnFlight1);
 
   });
 
   setTimeout(function() { flightSearch(); }, 1500);
-  // console.log(params); 
+  console.log(params); 
 };
 
 
