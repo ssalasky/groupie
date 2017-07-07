@@ -280,13 +280,11 @@ function getGif(){
     method: 'GET'
   }).done(function(response) {
     var newDiv = $("<div>")
-    var artistGif = $("<img>");
 
     artistGif.addClass("col s6 offset-s3");
     artistGif.attr("src", response.data[0].images.fixed_height.url);
     moveGif = response.data[0].images.fixed_height.url;
     stillGif = response.data[0].images.fixed_height_still.url;
-
     $("#artistSpace").html("<h2> Sweet! " + artist + " will be performing soon on " + date + " in " + areaLocation + " at the " + venueName + "<a href=" + website + " " + "target='_blank'" + "> Click here to purchase tickets.</a></h2>");
     $("#artistSpace").append(newDiv);
 
@@ -323,3 +321,7 @@ function clearout(){
   $("#loadingScreen").hide();
   $("#whole").show();
 };
+
+
+
+
