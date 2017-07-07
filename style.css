@@ -2,9 +2,12 @@ body {
   background-color: blue-grey;
   font-family: "Times New Roman", Georgia, Serif;
   background-image: url("images/party.jpg");
-
-
-
+}
+.row .col.offset-s3 {
+    width: 400px;
+    height: 300px;
+    margin-left: 35%;
+    margin-bottom: 10%;
 }
 .row .col.offset-s3 {
     width: 400px;
@@ -13,7 +16,7 @@ body {
     margin-bottom: 10%;
 }
 h5 {
-	text-align: center;
+  text-align: center;
 }
 h5 {
   text-align: center;
@@ -37,19 +40,12 @@ h5 {
 
 }
 
-.first-p{
-  color: red;
-}
 
-first-h2 {
-  margin-bottom: 10px;
-}
+
 .name {
-  /*margin-left: 0px;*/
-  /*color: #ffffff;*/
+  
   background-color: white;
   color: black;
-  /*margin-top: -20px;*/
 }
 .navbar-right {
   margin-right: 15px;
@@ -94,7 +90,7 @@ h2 {
   padding-bottom: 20px;
   color: #5d4037;
   font-family: 'Lobster', cursive;
-  margin-top: -10px;
+  margin-top: 10px;
   text-align: center;
   text-decoration: none;
   font-weight: bold;
@@ -109,6 +105,7 @@ label{
 
 p {
   margin-left: 5%;
+  margin-bottom: 50px;
   font-family: 'Lobster', cursive;
   font-size: 18px;
   text-align: center;
@@ -163,8 +160,9 @@ p {
      margin-right: 200px;
     font-size: 20px;
   }
+
   #search-button {
-    margin-top: 1%;
+    margin-top: 2%;
 }
 .footer{
   text-align: left;
@@ -190,6 +188,9 @@ p {
   padding-left: 20px;
 
   }
+  #search-button {
+    margin-top: 1%;
+}
   #search-input{
     width: 62%;
     margin-left: 1%;
@@ -239,7 +240,9 @@ font-size: 12px;
     width: 52%;
     margin-left: 10%;
   }
-
+#search-button {
+    margin-top: 2%;
+}
   .airport{
     color: white;
     margin-left: 20px;
@@ -252,7 +255,5 @@ font-size: 12px;
   }
 
 }
-
-
 
 
