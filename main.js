@@ -100,13 +100,13 @@ function airportCode(){
     url: queryURL,
     method: "GET"
   }).done(function(response){
-    console.log(response);
+    //console.log(response);
     airCode = response.stops[0].airports[0].iata;
     params.request.slice[0].destination = airCode;
     returnFlight2 = response.stops[0].airports[0].iata;
     params.request.slice[1].origin = returnFlight2;
-   //console.log("new Dest " + airCode);
-    console.log("help " + returnFlight2);
+    //console.log("new Dest " + airCode);
+    //console.log("help " + returnFlight2);
  });
 
   var URL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zips
@@ -115,18 +115,18 @@ function airportCode(){
     url: URL,
     method: "GET"
   }).done(function(response){ 
-    console.log(response);
+    //console.log(response);
     fromFlight = response.stops[0].airports[0].iata;
     params.request.slice[0].origin = fromFlight;
     returnFlight1 = response.stops[0].airports[0].iata;
     params.request.slice[1].destination = returnFlight1;
-    console.log("from " + fromFlight);
-    console.log("way back " + returnFlight1);
+    //console.log("from " + fromFlight);
+    //console.log("way back " + returnFlight1);
 
   });
 
   setTimeout(function() { flightSearch(); }, 1500);
-  console.log(params); 
+  //console.log(params); 
 };
 
 
@@ -145,11 +145,7 @@ function initMap() {
         url: queryURL,
         method: "GET"
       }).done(function(response){
-        //console.log(response);
-        // console.log(lat);
-        // console.log(long);
-        zips = response.results[0].address_components[7].long_name;
-        // console.log("hey " + zips);   
+        zips = response.results[0].address_components[7].long_name; 
       });
     });
   };
@@ -188,7 +184,9 @@ $("#search-button").on("click", function(){
         });
         } else {
           $("#noArtist").empty();
+
           var upcomingEvents = response.events[0].has_upcoming_events;
+
           venueLatitude = response.events[0].venue.location.lat;
           venueLongitude = response.events[0].venue.location.lon;
           hotelArea = response.events[0].venue.display_location;
@@ -200,16 +198,13 @@ $("#search-button").on("click", function(){
           params.request.slice[0].date = date;
           fReturn = moment(response.events[0].datetime_local).add(1, "days").format('YYYY-MM-DD');
           params.request.slice[1].date = fReturn;
+
           airportCode();
           startSearch();
           getGif();
           hotelSearch();
           restaurantSearch();
-          // console.log(venueName);
-          // console.log(zipCode);
-          // console.log("hotel area: " + hotelArea);
-          // console.log(date)
-          // console.log(artist);
+
           $("#search-input").val("");
         }
   });
@@ -245,8 +240,6 @@ function hotelSearch() {
         $("#hotelSpace").append(newRow);
       });
     };
-
-    //console.log(placeID);
   });
 };
 
@@ -279,13 +272,10 @@ function restaurantSearch() {
         $("#restaurantSpace").append(newRow);
       });
     };
-
-    //console.log(placeID);
   });
 };
 
 function getGif(){
-  console.log("called");
    var queryURL = "https://cors-anywhere.herokuapp.com/https://api.giphy.com/v1/gifs/search?q=" + artist + "&rating=pg-13&api_key=dc6zaTOxFJmzC";
   $.ajax({
     url: queryURL,
@@ -293,14 +283,15 @@ function getGif(){
   }).done(function(response) {
     var newDiv = $("<div>")
     var artistGif = $("img");
+
     artistGif.addClass("col s6 offset-s3");
     artistGif.attr("src", response.data[0].images.fixed_height.url);
     moveGif = response.data[0].images.fixed_height.url;
     stillGif = response.data[0].images.fixed_height_still.url;
+    newDiv.append(artistGif);
+
     $("#artistSpace").html("<h2> Sweet! " + artist + " will be performing soon on " + date + " in " + areaLocation + " at the " + venueName + "<a href=" + website + " " + "target='_blank'" + "> Click here to purchase tickets.</a></h2>");
     $("#artistSpace").append(newDiv);
-
-    newDiv.append(artistGif);
  });
 };
 
@@ -332,7 +323,3 @@ function clearout(){
   $("#loadingScreen").hide();
   $("#whole").show();
 };
-
-
-
-

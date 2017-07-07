@@ -2,35 +2,42 @@ body {
   background-color: blue-grey;
   font-family: "Times New Roman", Georgia, Serif;
   background-image: url("images/party.jpg");
+  margin-bottom: 60px;
 }
+
 .row .col.offset-s3 {
     width: 400px;
     height: 300px;
     margin-left: 35%;
     margin-bottom: 10%;
 }
+
 .row .col.offset-s3 {
     width: 400px;
     height: 300px;
     margin-left: 35%;
     margin-bottom: 10%;
 }
+
 h5 {
   text-align: center;
 }
+
 h5 {
   text-align: center;
 }
 
 table {
   background-color: black;
-  margin: 10px;
-  margin-right: 10px;
+}
+
+#places {
+  color: white;
 }
 
 .btn, .btn-large {
   float: right;
-  margin-top: -70px;
+  /*margin-top: -50px;*/
   text-decoration: none;
   color: #fff;
   background-color: #26a69a;
@@ -39,16 +46,18 @@ table {
   transition: .2s ease-out;
   cursor: pointer;
 }
+
 .navbar-default {
   margin: 20px;
   background-color: #708090;
-
 }
+
 .name {
   
   background-color: white;
   color: black;
 }
+
 .navbar-right {
   margin-right: 15px;
 }
@@ -69,13 +78,14 @@ h1 {
   position: absolute;
   float: right;
   margin-right: 25%;
-  margin-top: 0.8%;
+  margin-top: 0.75%;
 }
+
 .btn-info {
   padding-top: 11px;
-  padding-bottom: 35px;
-
+  padding-bottom: 32px;
 }
+
 #search-input{
   background-color: #F0F8FF;
   padding-left: 5px;
@@ -96,12 +106,11 @@ h2 {
   text-decoration: none;
   font-weight: bold;
 }
+
 label{
   color: #2e7d32;
   font-size: 40px;
   margin-left: 40%;
-
-
 }
 
 p {
@@ -110,32 +119,29 @@ p {
   font-family: 'Lobster', cursive;
   font-size: 18px;
   text-align: center;
-
 }
 
 .footer {
   position: fixed;
   bottom: 0;
   padding-top: 15px;
-  /*  color: white;*/
   color:black;
   width: 100%;
   text-align: center;
-  /* Set the fixed height of the footer here */
   height: 50px;
-  /* background-color: #666666;*/
   background-color: white;
 }
 
 #loadingScreen {
-
   width: 100%;
   height: 100%;
   z-index: 10;
 }
+
 #dadJoke {
   font-size: 16pt;
 } 
+
 #noArtist {
   font-size: 16pt;
   text-align: center;
