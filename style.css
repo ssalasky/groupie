@@ -1,225 +1,258 @@
-
 body {
-	background-color: blue-grey;
-	font-family: "Times New Roman", Georgia, Serif;
-	background-image: url("images/party.jpg");
+  background-color: blue-grey;
+  font-family: "Times New Roman", Georgia, Serif;
+  background-image: url("images/party.jpg");
 
 
+
+}
+.row .col.offset-s3 {
+    width: 400px;
+    height: 300px;
+    margin-left: 35%;
+    margin-bottom: 10%;
 }
 h5 {
 	text-align: center;
 }
+h5 {
+  text-align: center;
+}
 
 .btn, .btn-large {
-	float: right;
-	margin-top: -70px;
-	text-decoration: none;
-	color: #fff;
-	background-color: #26a69a;
-	text-align: center;
-	letter-spacing: .5px;
-	transition: .2s ease-out;
-	cursor: pointer;
+  float: right;
+  margin-top: -70px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #26a69a;
+  text-align: center;
+  letter-spacing: .5px;
+  transition: .2s ease-out;
+  cursor: pointer;
 }
 
 .navbar-default {
-	margin: 20px;
-	background-color: #708090;
+  margin: 20px;
+  background-color: #708090;
 
 }
 
 .first-p{
-	color: red;
+  color: red;
 }
 
 first-h2 {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 .name {
-	/*margin-left: 0px;*/
-	/*color: #ffffff;*/
-	background-color: white;
-	color: black;
-	/*margin-top: -20px;*/
+  /*margin-left: 0px;*/
+  /*color: #ffffff;*/
+  background-color: white;
+  color: black;
+  /*margin-top: -20px;*/
 }
 .navbar-right {
-	margin-right: 15px;
+  margin-right: 15px;
 }
 
 li {
-	position: absolute;
-	margin-right: 10px;
-	color: white;
+  position: absolute;
+  margin-right: 10px;
+  color: white;
 }
 
 h1 {
-	text-align: center;
-	line-height: 100%;
+  text-align: center;
+  line-height: 100%;
 }
 
 
 #search-button {
-	position: absolute;
-	float: right;
-	margin-right: 25%;
-	margin-top: 0.8%;
+  position: absolute;
+  float: right;
+  margin-right: 25%;
+  margin-top: 0.8%;
 }
 .btn-info{
-	padding-top: 11px;
-	padding-bottom: 35px;
+  padding-top: 11px;
+  padding-bottom: 35px;
 
 }
 #search-input{
-	background-color: #F0F8FF;
-	padding-left: 5px;
-	font-weight: bolder;
-	/*color: green;*/
-	font-size: 16px;
-	margin-top: 10px;
-	width: 30%;
-	margin-left: 35%;
+  background-color: #F0F8FF;
+  padding-left: 5px;
+  font-weight: bolder;
+  /*color: green;*/
+  font-size: 16px;
+  margin-top: 10px;
+  width: 30%;
+  margin-left: 35%;
 }
 
 
 h2 {     
-	padding-bottom: 20px;
-	color: #5d4037;
-	font-family: 'Lobster', cursive;
-	margin-top: -10px;
-	text-align: center;
-	text-decoration: none;
-	font-weight: bold;
+  padding-bottom: 20px;
+  color: #5d4037;
+  font-family: 'Lobster', cursive;
+  margin-top: -10px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
 }
 label{
-	color: #2e7d32;
-	font-size: 40px;
-	margin-left: 40%;
+  color: #2e7d32;
+  font-size: 40px;
+  margin-left: 40%;
 
 
 }
 
 p {
-	margin-left: 5%;
-	font-family: 'Lobster', cursive;
-	font-size: 18px;
-	text-align: center;
+  margin-left: 5%;
+  font-family: 'Lobster', cursive;
+  font-size: 18px;
+  text-align: center;
+
 }
 
 .footer {
-	position: fixed;
-	bottom: 0;
-	padding-top: 15px;
-	/*  color: white;*/
-	color:black;
-	width: 100%;
-	text-align: center;
-	/* Set the fixed height of the footer here */
-	height: 50px;
-	/* background-color: #666666;*/
-	background-color: white;
+  position: fixed;
+  bottom: 0;
+  padding-top: 15px;
+  /*  color: white;*/
+  color:black;
+  width: 100%;
+  text-align: center;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+  /* background-color: #666666;*/
+  background-color: white;
 }
 
 #loadingScreen{
 
-	width: 100%;
-	height: 100%;
-	z-index: 10;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
 }
 #dadJoke {
-	font-size: 16pt;
-}	
+  font-size: 16pt;
+} 
 #noArtist {
-	font-size: 16pt;
-	text-align: center;
+  font-size: 16pt;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px){
+  .name{
+    margin-right: 50px;
+  }
+  p{
+    margin-right: 200px;
+  }
+  label {
+
+    font-size: 35px;
+    margin-left: 20%;
+  }
+  #search-input{
+    width: 40%;
+    margin-left: 10%;
+  }
+  h2{
+     margin-right: 200px;
+    font-size: 20px;
+  }
+  #search-button {
+    margin-top: 1%;
+}
+.footer{
+  text-align: left;
+  padding-left: 15%;
+  
+
+
+}
+
+}
+@media screen and (max-width: 414px){
+  label {
+    font-size: 20px;
+  }
+  h2{
+    margin-top: 10px;
+    margin-right: 20px;
+    font-size: 18px;
+  }
+  p {
+ font-size: 12px;
+  margin-right: 140px;
+  padding-left: 20px;
+
+  }
+  #search-input{
+    width: 62%;
+    margin-left: 1%;
+    margin-top: 1.5%;
+  }
+  .footer{
+font-size: 12px;
+ padding-right: 30%;
+  }
+
+}
+
+@media screen and (max-width: 375px) {
+  .name {
+
+    margin-right: 100px;
+
+  }
+
+  label{
+    font-size: 14px;
+    margin-left: 30%;
+  }
+
+  h2 {
+    margin-right: 20%;
+    font-size: 16px;
+    line-height: 50%;
+    padding-bottom: 10px;
+  }
+  p {
+    
+  font-size: 12px;
+  margin-right: 140px;
+  padding-left: 40px;
+/*    margin-bottom: 20px;*/
+
+
+  }
+
+  #search-input {
+     padding-left: 5px;
+    font-weight: bolder;
+    padding-bottom: 5px;
+    font-size: 16px;
+    margin-top: 8px;
+    width: 52%;
+    margin-left: 10%;
+  }
+
+  .airport{
+    color: white;
+    margin-left: 20px;
+  }
+  .footer{
+
+    font-size: 10px;
+    padding-right: 30%
+
+  }
+
 }
 
 
-/*Map stuff*/
-
-/*#map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      /*html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      table {
-        font-size: 12px;
-      }
-      #map {
-        width: 440px;
-      }
-      #listing {
-        position: absolute;
-        width: 200px;
-        height: 470px;
-        overflow: auto;
-        left: 442px;
-        top: 0px;
-        cursor: pointer;
-        overflow-x: hidden;
-      }
-      #findhotels {
-        position: absolute;
-        text-align: right;
-        width: 100px;
-        font-size: 14px;
-        padding: 4px;
-        z-index: 5;
-        background-color: #fff;
-      }
-      #locationField {
-        position: absolute;
-        width: 190px;
-        height: 25px;
-        left: 108px;
-        top: 0px;
-        z-index: 5;
-        background-color: #fff;
-      }
-      #controls {
-        position: absolute;
-        left: 300px;
-        width: 140px;
-        top: 0px;
-        z-index: 5;
-        background-color: #fff;
-      }
-      #autocomplete {
-        width: 100%;
-      }
-      #country {
-        width: 100%;
-      }
-      .placeIcon {
-        width: 20px;
-        height: 34px;
-        margin: 4px;
-      }
-      .hotelIcon {
-        width: 24px;
-        height: 24px;
-      }
-      #resultsTable {
-        border-collapse: collapse;
-        width: 240px;
-      }
-      #rating {
-        font-size: 13px;
-        font-family: Arial Unicode MS;
-      }
-      .iw_table_row {
-        height: 18px;
-      }
-      .iw_attribute_name {
-        font-weight: bold;
-        text-align: right;
-      }
-      .iw_table_icon {
-        text-align: right;
-      }
 
 
-*/
