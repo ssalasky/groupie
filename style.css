@@ -2,12 +2,15 @@ body {
   background-color: blue-grey;
   font-family: "Times New Roman", Georgia, Serif;
   background-image: url("images/party.jpg");
-
-
-
+}
+.row .col.offset-s3 {
+    width: 400px;
+    height: 300px;
+    margin-left: 35%;
+    margin-bottom: 10%;
 }
 h5 {
-	text-align: center;
+  text-align: center;
 }
 h5 {
   text-align: center;
@@ -31,19 +34,12 @@ h5 {
 
 }
 
-.first-p{
-  color: red;
-}
 
-first-h2 {
-  margin-bottom: 10px;
-}
+
 .name {
-  /*margin-left: 0px;*/
-  /*color: #ffffff;*/
+  
   background-color: white;
   color: black;
-  /*margin-top: -20px;*/
 }
 .navbar-right {
   margin-right: 15px;
@@ -88,7 +84,7 @@ h2 {
   padding-bottom: 20px;
   color: #5d4037;
   font-family: 'Lobster', cursive;
-  margin-top: -10px;
+  margin-top: 10px;
   text-align: center;
   text-decoration: none;
   font-weight: bold;
@@ -103,6 +99,7 @@ label{
 
 p {
   margin-left: 5%;
+  margin-bottom: 50px;
   font-family: 'Lobster', cursive;
   font-size: 18px;
   text-align: center;
@@ -136,46 +133,14 @@ p {
   font-size: 16pt;
   text-align: center;
 }
+
 @media screen and (max-width: 768px){
   .name{
-    margin-right: 280px;
-  }
-
-  label {
-
-
-    font-size: 35px;
-    margin-left: 15%;
-  }
-  #search-input{
-    width: 40%;
-    margin-left: 3%;
+    margin-right: 50px;
   }
   p{
-    padding-right: 40%;
+    margin-right: 200px;
   }
-  h2{
-     margin-right: 300px;
-#loadingScreen{
-
-	width: 100%;
-	height: 100%;
-	z-index: 10;
-}
-#dadJoke {
-	font-size: 16pt;
-}	
-#noArtist {
-	font-size: 16pt;
-	text-align: center;
-}
-@media screen and (max-width: 768px){
-	.name{
-		margin-right: 200px;
-	}
-	p{
-		margin-right: 200px;
-	}
   label {
 
     font-size: 35px;
@@ -186,11 +151,12 @@ p {
     margin-left: 10%;
   }
   h2{
-  	 margin-right: 200px;
+     margin-right: 200px;
     font-size: 20px;
   }
+
   #search-button {
-    margin-top: 1%;
+    margin-top: 2%;
 }
 .footer{
   text-align: left;
@@ -206,26 +172,29 @@ p {
 
   label {
     font-size: 20px;
-    margin-left: 10%;
-  }
-  .name{
-    padding-right: 220px;
   }
   h2{
     margin-top: 10px;
-    margin-right: 160px;
+    margin-right: 20px;
     font-size: 18px;
   }
-  p{
-    font-size: 10px;
+  p {
+ font-size: 12px;
+  margin-right: 140px;
+  padding-left: 20px;
+
   }
+  #search-button {
+    margin-top: 1%;
+}
   #search-input{
-    width: 32%;
+    width: 62%;
     margin-left: 1%;
     margin-top: 1.5%;
   }
   .footer{
-    padding-right: 30%;
+font-size: 12px;
+ padding-right: 30%;
   }
 
 }
@@ -234,50 +203,42 @@ p {
   .name {
 
     margin-right: 100px;
-    padding-right: 40%;
 
   }
 
   label{
-
-
     font-size: 14px;
-    margin-left: 15%;
+    margin-left: 30%;
   }
 
-  h2{
-    margin-right: 40%;
-
+  h2 {
+    margin-right: 20%;
     font-size: 16px;
     line-height: 50%;
     padding-bottom: 10px;
   }
-  p{
+  p {
+    
+  font-size: 12px;
+  margin-right: 140px;
+  padding-left: 40px;
+/*    margin-bottom: 20px;*/
 
 
-    margin-bottom: 20px;
-
-  }
-  #search-button {
-    position: absolute;
-    float: right;
-    margin-right: 25%;
-    margin-top: 2%;
-    margin-left: 0.5%;
   }
 
   #search-input {
-    padding-left: 5px;
+     padding-left: 5px;
     font-weight: bolder;
     padding-bottom: 5px;
     font-size: 16px;
     margin-top: 8px;
-
-    width: 32%;
-
-    margin-left: 1%;
+    width: 52%;
+    margin-left: 10%;
   }
-
+#search-button {
+    margin-top: 2%;
+}
   .airport{
     color: white;
     margin-left: 20px;
@@ -291,91 +252,4 @@ p {
 
 }
 
-
-/*Map stuff*/
-
-/*#map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      /*html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      table {
-        font-size: 12px;
-      }
-      #map {
-        width: 440px;
-      }
-      #listing {
-        position: absolute;
-        width: 200px;
-        height: 470px;
-        overflow: auto;
-        left: 442px;
-        top: 0px;
-        cursor: pointer;
-        overflow-x: hidden;
-      }
-      #findhotels {
-        position: absolute;
-        text-align: right;
-        width: 100px;
-        font-size: 14px;
-        padding: 4px;
-        z-index: 5;
-        background-color: #fff;
-      }
-      #locationField {
-        position: absolute;
-        width: 190px;
-        height: 25px;
-        left: 108px;
-        top: 0px;
-        z-index: 5;
-        background-color: #fff;
-      }
-      #controls {
-        position: absolute;
-        left: 300px;
-        width: 140px;
-        top: 0px;
-        z-index: 5;
-        background-color: #fff;
-      }
-      #autocomplete {
-        width: 100%;
-      }
-      #country {
-        width: 100%;
-      }
-      .placeIcon {
-        width: 20px;
-        height: 34px;
-        margin: 4px;
-      }
-      .hotelIcon {
-        width: 24px;
-        height: 24px;
-      }
-      #resultsTable {
-        border-collapse: collapse;
-        width: 240px;
-      }
-      #rating {
-        font-size: 13px;
-        font-family: Arial Unicode MS;
-      }
-      .iw_table_row {
-        height: 18px;
-      }
-      .iw_attribute_name {
-        font-weight: bold;
-        text-align: right;
-      }
-      .iw_table_icon {
-        text-align: right;
-      }
 
