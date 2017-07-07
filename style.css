@@ -11,8 +11,8 @@ body {
 }
 td, th {
   padding-left: 100px;
-    color: green;
- 
+  padding-bottom: 10px;
+   color: green;
 }
 .row .col.offset-s3 {
     width: 400px;
