@@ -61,8 +61,6 @@ h1 {
   text-align: center;
   line-height: 100%;
 }
-
-
 #search-button {
   position: absolute;
   float: right;
@@ -83,8 +81,6 @@ h1 {
   width: 30%;
   margin-left: 35%;
 }
-
-
 h2 {     
   padding-bottom: 20px;
   color: #A52A2A;
@@ -97,20 +93,15 @@ h2 {
 label{
   color: #2e7d32;
   font-size: 40px;
-  margin-left: 40%;
-
-
+  margin-left: 35%;
 }
-
 p {
   margin-left: 5%;
   margin-bottom: 30px;
   font-family: 'Lobster', cursive;
   font-size: 18px;
   text-align: center;
-
 }
-
 .footer {
   position: fixed;
   bottom: 0;
