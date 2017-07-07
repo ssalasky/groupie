@@ -1,6 +1,5 @@
 $("#loadingScreen").hide();
-$("#hotelSpace").hide();
-$("#restaurantSpace").hide();
+$("#places").hide();
 
 var config = {
   apiKey: "AIzaSyD7Dl_oVcskvGAUxxgm3LwQC_saHWDZlbQ",
@@ -223,7 +222,7 @@ function hotelSearch() {
     url: queryURL,
     type: "GET"
   }).done(function(response) {
-    $("#hotelSpace").show();
+    $("#places").show();
 
     for (var i=0; i <10; i++) {
       var place = response.results[i].place_id;
@@ -233,8 +232,15 @@ function hotelSearch() {
         type: "GET"
       }).done(function(response) {
         var newRow = $("<tr>");
+        var rating = "";
 
-        newRow.html("<td><a href=" + response.result.website + " target='_blank'>" + response.result.name + "</a></td><td>" + response.result.rating + "</td>");
+        if (response.result.rating === undefined) {
+          rating = "No Rating";
+        } else {
+          rating = response.result.rating;
+        }
+
+        newRow.html("<td><a href=" + response.result.website + " target='_blank'>" + response.result.name + "</a></td><td>" + rating + "</td></tr>");
 
         $("#hotelSpace").append(newRow);
       });
@@ -251,7 +257,6 @@ function restaurantSearch() {
     url: queryURL,
     type: "GET"
   }).done(function(response) {
-    $("#restaurantSpace").show();
 
     for (var i=0; i <10; i++) {
       var place = response.results[i].place_id;
@@ -261,8 +266,15 @@ function restaurantSearch() {
         type: "GET"
       }).done(function(response) {
         var newRow = $("<tr>");
+        var rating = "";
 
-        newRow.html("<td><a href=" + response.result.website + " target='_blank'>" + response.result.name + "</a></td><td>" + response.result.rating + "</td>");
+        if (response.result.rating === undefined) {
+          rating = "No Rating";
+        } else {
+          rating = response.result.rating;
+        }
+
+        newRow.html("<td><a href=" + response.result.website + " target='_blank'>" + response.result.name + "</a></td><td>" + rating + "</td></tr>");
 
         $("#restaurantSpace").append(newRow);
       });

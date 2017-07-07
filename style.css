@@ -22,6 +22,12 @@ h5 {
   text-align: center;
 }
 
+table {
+  background-color: black;
+  margin: 10px;
+  margin-right: 10px;
+}
+
 .btn, .btn-large {
   float: right;
   margin-top: -70px;
