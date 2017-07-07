@@ -12,6 +12,10 @@ body {
   margin-bottom: 10%;
 }
 
+.first-h2 {
+marging-bottom:10px;
+}
+
 h5 {
   text-align: center;
 }
@@ -60,8 +64,6 @@ h1 {
   text-align: center;
   line-height: 100%;
 }
-
-
 #search-button {
   position: absolute;
   float: right;
@@ -102,17 +104,15 @@ h2 {
 label{
   color: #2e7d32;
   font-size: 40px;
-  margin-left: 40%;
+  margin-left: 35%;
 }
-
 p {
   margin-left: 5%;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   font-family: 'Lobster', cursive;
   font-size: 18px;
   text-align: center;
 }
-
 .footer {
   position: fixed;
   bottom: 0;
@@ -166,13 +166,16 @@ p {
 
 }
 @media screen and (max-width: 414px){
+  .name {
+    margin-right: 160px;
+  }
   label {
     font-size: 20px;
   }
   h2{
     margin-top: 10px;
-    margin-right: 20px;
-    font-size: 18px;
+    margin-right: 80px;
+    font-size: 12px;
   }
   p {
  font-size: 12px;
@@ -207,7 +210,7 @@ font-size: 12px;
   }
   h2 {
     margin-right: 20%;
-    font-size: 16px;
+    font-size: 12px;
     line-height: 50%;
     padding-bottom: 10px;
   }
@@ -223,7 +226,7 @@ font-size: 12px;
     font-size: 16px;
     margin-top: 8px;
     width: 52%;
-    margin-left: 10%;
+
   }
 #search-button {
     margin-top: 2%;

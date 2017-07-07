@@ -101,7 +101,6 @@ function flightSearch(){
 //translates zipcodes for destination and origin cities into airport code for consumption by google flights api
 function airportCode(){
   var queryURL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zipCode
- 
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -111,9 +110,7 @@ function airportCode(){
     returnFlight2 = response.stops[0].airports[0].iata;
     params.request.slice[1].origin = returnFlight2;
  });
-
   var URL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zips
-  
   $.ajax({
     url: URL,
     method: "GET"
@@ -137,7 +134,6 @@ function initMap() {
       var lat = pos.lat;
       var long = pos.lng;
       var queryURL ="https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+long+"&key=AIzaSyBao5t2cXEN-W6a_Mw0JBIUlifRXiSaLaM";
-        
       $.ajax({
         url: queryURL,
         method: "GET"
@@ -147,64 +143,62 @@ function initMap() {
     });
   };
 };
-
 initMap();
 
 //triggers the search of artist to seat geek to get date and venue location
 //error handling built in if no artist entered or no upcoming event found
 $("#search-button").on("click", function(){
   artist = $("#search-input").val().trim();
-    $("#artistSpace").empty();
-    var queryURL = "https://cors-anywhere.herokuapp.com/https://api.seatgeek.com/2/events?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
+  $("#artistSpace").empty();
+  var queryURL = "https://cors-anywhere.herokuapp.com/https://api.seatgeek.com/2/events?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
+  if(!artist) {
+    return false
+  }
+  $.ajax({
+    url: queryURL,
+    method: 'GET'
+  }).done(function(response) {
+    //If there are no events coming up for the artist the following happens
+    if(response.events[0] === undefined){   
+      $("#first-page").empty();
+      $("#noArtist").text("Sorry " + artist + " is not performing anytime soon... Try another artist.");
+      var queryURL = "https://cors-anywhere.herokuapp.com/https://api.giphy.com/v1/gifs/search?q=sorry-taylor-swift&rating=pg-13&api_key=dc6zaTOxFJmzC";
+      $.ajax({
+        url: queryURL,
+        method: 'GET'
+      }).done(function(response) {
+          var newDiv = $("<div>")
+          var artistGif = $("<img>");
+          artistGif.addClass("col s6 offset-s3");
+          artistGif.attr("src", response.data[1].images.fixed_height.url);
+          $("#noArtist").append(newDiv);
+          newDiv.append(artistGif);
+      });
+      } else {
+        $("#noArtist").empty();
 
-    if(!artist) {
-      return false
-    }
-    $.ajax({
-      url: queryURL,
-      method: 'GET'
-    }).done(function(response) {
-      //If there are no events coming up for the artist the following happens
-      if(response.events[0] === undefined){   
-        $("#first-page").empty();
-        $("#noArtist").text("Sorry " + artist + " is not performing anytime soon... Try another artist.");
-        var queryURL = "https://cors-anywhere.herokuapp.com/https://api.giphy.com/v1/gifs/search?q=sorry-taylor-swift&rating=pg-13&api_key=dc6zaTOxFJmzC";
-        $.ajax({
-          url: queryURL,
-          method: 'GET'
-        }).done(function(response) {
-            var newDiv = $("<div>")
-            var artistGif = $("<img>");
-            artistGif.addClass("col s6 offset-s3");
-            artistGif.attr("src", response.data[1].images.fixed_height.url);
-            $("#noArtist").append(newDiv);
-            newDiv.append(artistGif);
-        });
-        } else {
-          $("#noArtist").empty();
+        var upcomingEvents = response.events[0].has_upcoming_events;
 
-          var upcomingEvents = response.events[0].has_upcoming_events;
+        venueLatitude = response.events[0].venue.location.lat;
+        venueLongitude = response.events[0].venue.location.lon;
+        hotelArea = response.events[0].venue.display_location;
+        areaLocation = response.events[0].venue.city;
+        venueName = response.events[0].venue.name;
+        website = response.events[0].url;
+        zipCode = response.events[0].venue.postal_code;
+        date = moment(response.events[0].datetime_local).subtract(1, "days").format('YYYY-MM-DD');
+        params.request.slice[0].date = date;
+        fReturn = moment(response.events[0].datetime_local).add(1, "days").format('YYYY-MM-DD');
+        params.request.slice[1].date = fReturn;
 
-          venueLatitude = response.events[0].venue.location.lat;
-          venueLongitude = response.events[0].venue.location.lon;
-          hotelArea = response.events[0].venue.display_location;
-          areaLocation = response.events[0].venue.city;
-          venueName = response.events[0].venue.name;
-          website = response.events[0].url;
-          zipCode = response.events[0].venue.postal_code;
-          date = moment(response.events[0].datetime_local).subtract(1, "days").format('YYYY-MM-DD');
-          params.request.slice[0].date = date;
-          fReturn = moment(response.events[0].datetime_local).add(1, "days").format('YYYY-MM-DD');
-          params.request.slice[1].date = fReturn;
+        airportCode();
+        startSearch();
+        getGif();
+        hotelSearch();
+        restaurantSearch();
 
-          airportCode();
-          startSearch();
-          getGif();
-          hotelSearch();
-          restaurantSearch();
-
-          $("#search-input").val("");
-        }
+        $("#search-input").val("");
+      }
   });
 }); 
 
@@ -220,7 +214,6 @@ function hotelSearch() {
 
     for (var i=0; i <10; i++) {
       var place = response.results[i].place_id;
-
       $.ajax({
         url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place + "&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M",
         type: "GET"
@@ -299,14 +292,12 @@ function getGif(){
 //produces a dad joke for the loading screen
 function dadJoke() {
   var queryURL ="https://icanhazdadjoke.com/slack";
-
   $.ajax({
     url: queryURL,
     method: 'GET'
   }).done(function(response){
     var joke = response.attachments[0].text;
     $("#dadJoke").text(joke);
-
   });
 };
 
