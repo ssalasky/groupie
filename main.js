@@ -1,4 +1,6 @@
 $("#loadingScreen").hide();
+$("#hotelSpace").hide();
+$("#restaurantSpace").hide();
 
 var config = {
   apiKey: "AIzaSyD7Dl_oVcskvGAUxxgm3LwQC_saHWDZlbQ",
@@ -144,10 +146,10 @@ function initMap() {
         url: queryURL,
         method: "GET"
       }).done(function(response){
-        // console.log(response);
+        //console.log(response);
         // console.log(lat);
         // console.log(long);
-        zips = response.results[0].address_components[8].long_name;
+        zips = response.results[0].address_components[7].long_name;
         // console.log("hey " + zips);   
       });
     });
@@ -202,7 +204,8 @@ $("#search-button").on("click", function(){
           airportCode();
           startSearch();
           getGif();
-          placeSearch();
+          hotelSearch();
+          restaurantSearch();
           // console.log(venueName);
           // console.log(zipCode);
           // console.log("hotel area: " + hotelArea);
@@ -213,13 +216,14 @@ $("#search-button").on("click", function(){
   });
 }); 
 
-function placeSearch() {
+function hotelSearch() {
   var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + venueLatitude + "," + venueLongitude + "&radius=5000&types=lodging&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M";
   
   $.ajax({ 
     url: queryURL,
     type: "GET"
   }).done(function(response) {
+    $("#hotelSpace").show();
 
     for (var i=0; i <10; i++) {
       var place = response.results[i].place_id;
@@ -230,9 +234,37 @@ function placeSearch() {
       }).done(function(response) {
         var newRow = $("<tr>");
 
-        newRow.html("<td><a href=" + response.result.url + " target='_blank'>" + response.result.name + "</a></td><td>" + response.result.rating + "</td>");
+        newRow.html("<td><a href=" + response.result.website + " target='_blank'>" + response.result.name + "</a></td><td>" + response.result.rating + "</td>");
 
         $("#hotelSpace").append(newRow);
+      });
+    };
+
+    //console.log(placeID);
+  });
+};
+
+function restaurantSearch() {
+  var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + venueLatitude + "," + venueLongitude + "&radius=5000&types=restarant&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M";
+  
+  $.ajax({ 
+    url: queryURL,
+    type: "GET"
+  }).done(function(response) {
+    $("#restaurantSpace").show();
+
+    for (var i=0; i <10; i++) {
+      var place = response.results[i].place_id;
+
+      $.ajax({
+        url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place + "&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M",
+        type: "GET"
+      }).done(function(response) {
+        var newRow = $("<tr>");
+
+        newRow.html("<td><a href=" + response.result.website + " target='_blank'>" + response.result.name + "</a></td><td>" + response.result.rating + "</td>");
+
+        $("#restaurantSpace").append(newRow);
       });
     };
 
