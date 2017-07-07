@@ -1,5 +1,4 @@
 $("#loadingScreen").hide();
-
 var config = {
   apiKey: "AIzaSyD7Dl_oVcskvGAUxxgm3LwQC_saHWDZlbQ",
   authDomain: "groupie-project.firebaseapp.com",
@@ -140,14 +139,11 @@ function initMap() {
     });
   };
 };
-
 initMap();
-
 $("#search-button").on("click", function(){
   artist = $("#search-input").val().trim();
     $("#artistSpace").empty();
     var queryURL = "https://cors-anywhere.herokuapp.com/https://api.seatgeek.com/2/events?q=" + artist + "&per_page=1&client_id=MTAyMzg3N3wxNDk4MDEzODgyLjUy";
-
     if(!artist) {
       return false
     }
@@ -207,18 +203,14 @@ function placeSearch() {
     url: queryURL,
     type: "GET"
   }).done(function(response) {
-
     for (var i=0; i <10; i++) {
       var place = response.results[i].place_id;
-
       $.ajax({
         url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place + "&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M",
         type: "GET"
       }).done(function(response) {
         var newRow = $("<tr>");
-
         newRow.html("<td><a href=" + response.result.url + " target='_blank'>" + response.result.name + "</a></td><td>" + response.result.rating + "</td>");
-
         $("#hotelSpace").append(newRow);
       });
     };
@@ -259,11 +251,9 @@ function loading() {
   $("#loadingScreen").show();
   time();
 };
-
 function time(){
   t = setTimeout(clearout, 6000)
 };
-
 function clearout(){
   $("#loadingScreen").hide();
   $("#whole").show();
