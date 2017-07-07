@@ -10,6 +10,7 @@ body {
     margin-bottom: 10%;
 }
 td, th {
+  padding-left: 100px;
     color: green;
  
 }
