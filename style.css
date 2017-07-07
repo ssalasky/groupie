@@ -9,6 +9,10 @@ body {
     margin-left: 35%;
     margin-bottom: 10%;
 }
+td, th {
+    color: green;
+ 
+}
 .row .col.offset-s3 {
     width: 400px;
     height: 300px;
