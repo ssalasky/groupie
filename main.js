@@ -1,5 +1,6 @@
 $("#loadingScreen").hide();
 $("#places").hide();
+$("#flights").hide();
 
 var config = {
   apiKey: "AIzaSyD7Dl_oVcskvGAUxxgm3LwQC_saHWDZlbQ",
@@ -52,6 +53,7 @@ var params = {
   }
 }
 
+//takes users input and stores it to the database
 $("#search-button").on("click", function(){
   event.preventDefault();
   artist = $("#search-input").val();
@@ -60,20 +62,23 @@ $("#search-button").on("click", function(){
   });
 });
 
+//clears the screen and displays loading page while api calls initiate
 function startSearch(){
   $("#first-page").empty();
   loading();
 };
 
+//takes data from previous apis and sends to google flights to get top flight options
 function flightSearch(){
-  var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyBao5t2cXEN-W6a_Mw0JBIUlifRXiSaLaM"  
-  //AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs"//AIzaSyDlW31JmWnRfy96JfYhjDQiL2ZQNYB2xkk";
+  var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAx7C8CHa6wj23mmpb70ve_KcW14WFZP38"  
+
   $.ajax({
     url: queryURL,
     headers: {"Content-Type":"application/json"},
     data: JSON.stringify(params),
     method: "POST"
   }).done((response) => {
+    $("#flights").show();
 
    var flightPrice1 = response.trips.tripOption[0].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[0].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[0].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
    var flightPrice2 = response.trips.tripOption[1].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[1].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[1].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
@@ -93,6 +98,7 @@ function flightSearch(){
   });
 };
 
+//translates zipcodes for destination and origin cities into airport code for consumption by google flights api
 function airportCode(){
   var queryURL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zipCode
  
@@ -100,13 +106,10 @@ function airportCode(){
     url: queryURL,
     method: "GET"
   }).done(function(response){
-    //console.log(response);
     airCode = response.stops[0].airports[0].iata;
     params.request.slice[0].destination = airCode;
     returnFlight2 = response.stops[0].airports[0].iata;
     params.request.slice[1].origin = returnFlight2;
-    //console.log("new Dest " + airCode);
-    //console.log("help " + returnFlight2);
  });
 
   var URL = "https://cors-anywhere.herokuapp.com/http://www.distance24.org/route.json?stops="+zips
@@ -115,21 +118,15 @@ function airportCode(){
     url: URL,
     method: "GET"
   }).done(function(response){ 
-    //console.log(response);
     fromFlight = response.stops[0].airports[0].iata;
     params.request.slice[0].origin = fromFlight;
     returnFlight1 = response.stops[0].airports[0].iata;
     params.request.slice[1].destination = returnFlight1;
-    //console.log("from " + fromFlight);
-    //console.log("way back " + returnFlight1);
-
   });
-
   setTimeout(function() { flightSearch(); }, 1500);
-  //console.log(params); 
 };
 
-
+//captures users location
 function initMap() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -153,6 +150,8 @@ function initMap() {
 
 initMap();
 
+//triggers the search of artist to seat geek to get date and venue location
+//error handling built in if no artist entered or no upcoming event found
 $("#search-button").on("click", function(){
   artist = $("#search-input").val().trim();
     $("#artistSpace").empty();
@@ -165,7 +164,6 @@ $("#search-button").on("click", function(){
       url: queryURL,
       method: 'GET'
     }).done(function(response) {
-      // console.log(response);
       //If there are no events coming up for the artist the following happens
       if(response.events[0] === undefined){   
         $("#first-page").empty();
@@ -210,6 +208,7 @@ $("#search-button").on("click", function(){
   });
 }); 
 
+//takes lat and lon of venue location and sends to google places api to obtain nearby lodging options
 function hotelSearch() {
   var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + venueLatitude + "," + venueLongitude + "&radius=5000&types=lodging&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M";
   
@@ -243,8 +242,9 @@ function hotelSearch() {
   });
 };
 
+//takes lat and lon of venue location and sends to google places api to obtain nearby restaurant options
 function restaurantSearch() {
-  var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + venueLatitude + "," + venueLongitude + "&radius=5000&types=restarant&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M";
+  var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + venueLatitude + "," + venueLongitude + "&radius=5000&types=restaurant&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M";
   
   $.ajax({ 
     url: queryURL,
@@ -275,6 +275,7 @@ function restaurantSearch() {
   });
 };
 
+//takes user input and produces a gif of artist on page
 function getGif(){
    var queryURL = "https://cors-anywhere.herokuapp.com/https://api.giphy.com/v1/gifs/search?q=" + artist + "&rating=pg-13&api_key=dc6zaTOxFJmzC";
   $.ajax({
@@ -295,6 +296,7 @@ function getGif(){
  });
 };
 
+//produces a dad joke for the loading screen
 function dadJoke() {
   var queryURL ="https://icanhazdadjoke.com/slack";
 
@@ -308,6 +310,7 @@ function dadJoke() {
   });
 };
 
+//runs a loading screen while api calls are occuring
 function loading() {
   dadJoke();
   $("#whole").hide();
@@ -315,10 +318,12 @@ function loading() {
   time();
 };
 
+//timeout for above functions
 function time(){
   t = setTimeout(clearout, 6000)
 };
 
+//ends the loading screen and displays results
 function clearout(){
   $("#loadingScreen").hide();
   $("#whole").show();

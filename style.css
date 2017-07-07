@@ -6,21 +6,10 @@ body {
 }
 
 .row .col.offset-s3 {
-    width: 400px;
-    height: 300px;
-    margin-left: 35%;
-    margin-bottom: 10%;
-}
-
-.row .col.offset-s3 {
-    width: 400px;
-    height: 300px;
-    margin-left: 35%;
-    margin-bottom: 10%;
-}
-
-h5 {
-  text-align: center;
+  width: 400px;
+  height: 300px;
+  margin-left: 35%;
+  margin-bottom: 10%;
 }
 
 h5 {
@@ -53,7 +42,6 @@ table {
 }
 
 .name {
-  
   background-color: white;
   color: black;
 }
@@ -96,6 +84,10 @@ h1 {
   margin-left: 35%;
 }
 
+#flights {
+  background-color: black;
+  color: white;
+}
 
 h2 {     
   padding-bottom: 20px;
@@ -247,5 +239,3 @@ font-size: 12px;
   }
 
 }
-
-

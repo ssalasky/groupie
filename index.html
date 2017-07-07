@@ -9,17 +9,16 @@
 	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
-       
 </head>
 
 <body>
+
 <!-- loading screen -->
 <div id="loadingScreen" class="row col s12" >
   <img class="col s2 offset-s5" src="images/169.gif">
   <div class="row col s12"><h5>"Please enjoy this dad joke while we load your results."</h5></div>
   <div class = "row col s6 offset-s3" id="dadJoke"></div>
 </div>
-
 
 <div class="container" id="whole">
 	<!-- nav bar for the head where that will have a context for the comppany -->
@@ -42,28 +41,24 @@
 			Search
 		</button>
 	</div>
-	
-	<!-- Map stuff starts -->
-	<div id="map"></div>
 
 	<div class= "row seatgeek">
 		<div class= "col s1"></div>
 	</div>
 
-	<div class="row bFlight center-align"></div>
-	<div class="row flights center-align">
+ 	<div class ="row" id="noArtist"></div>
+
+	<div class="row" id="artistSpace"></div>
+	<div class="row center-align" id="flights">
+		<p>Flights to get you to the concert:</p>
 		<div class="col s2 flight1 flight center-align"></div>
 		<div class="col s2 flight2 flight center-align"></div>
 		<div class="col s2 flight3 flight center-align"></div>
 		<div class="col s2 flight4 flight center-align"></div>
 		<div class="col s2 flight5 flight center-align"></div>
 		<div class="col s2 flight6 flight center-align"></div>
+		<div class="row bFlight center-align"></div>
 	</div>
-
- 	<div class ="row" id="noArtist"></div>
-
-	<div id="second-page"></div>
-	<div class="row" id="artistSpace"></div>
 	<div class="row center-align" id="places">
 		<p>Local accomodations and restaurants for your visit:</p>
 		<table class="highlight centered responsive-table">
@@ -79,8 +74,6 @@
 			</thead>
 			<tbody id="restaurantSpace"></tbody>
 		</table>
-	</div>
-	<div>
 	</div>
 </div>
 
