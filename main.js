@@ -215,7 +215,7 @@ function getGif(){
     method: 'GET'
   }).done(function(response) {
     var newDiv = $("<div>")
-
+    var artistGif = $("img");
     artistGif.addClass("col s6 offset-s3");
     artistGif.attr("src", response.data[0].images.fixed_height.url);
     moveGif = response.data[0].images.fixed_height.url;
