@@ -32,14 +32,14 @@ var params = {
   request: {
     slice: [
     {
-      origin: "",
+      origin: "DEN",
       destination: "",
       date: "",
       maxStops: 1
     },
      {
       origin: "",
-      destination: "",
+      destination: "DEN",
       date: "",
       maxStops: 1
     }
@@ -73,7 +73,8 @@ function flightSearch(){
 
 
 
-        var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs"//AIzaSyDlW31JmWnRfy96JfYhjDQiL2ZQNYB2xkk";
+        var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyBao5t2cXEN-W6a_Mw0JBIUlifRXiSaLaM"  
+        //AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs"//AIzaSyDlW31JmWnRfy96JfYhjDQiL2ZQNYB2xkk";
 
         $.ajax({
         url: queryURL,
@@ -95,7 +96,7 @@ function flightSearch(){
          var flightPrice6 = response.trips.tripOption[5].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[5].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[5].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
          var flightLink = "https://www.google.com/flights/#search;f="+fromFlight+";t="+airCode+";d="+date+";r="+fReturn;
          //console.log(flightPrice1);
-         $(".bFlight").append("<a href="+flightLink+"target=_blank>Click to Purchase Flights!</a>");
+         $(".bFlight").append("<a href="+flightLink+" "+"target='_blank'" +">Click to Purchase Flights!</a>");
          $(".flight1").append("Total Price: $" + flightPrice1.slice(3));
          $(".flight2").append("Total Price: $" + flightPrice2.slice(3));
          $(".flight3").append("Total Price: $" + flightPrice3.slice(3));
@@ -141,14 +142,14 @@ function airportCode(){
     method: "GET"
   }).done(function(response){ 
     console.log(response);
-    fromFlight = response.stops[0].airports[0].iata;
-    params.request.slice[0].origin = fromFlight;
+    //fromFlight = response.stops[0].airports[0].iata;
+    fromFlight = params.request.slice[0].origin;
 
-    returnFlight1 = response.stops[0].airports[0].iata;
-    params.request.slice[1].destination = returnFlight1;
+    // returnFlight1 = response.stops[0].airports[0].iata;
+    returnFlight = params.request.slice[1].destination;
 
-    console.log("from " + fromFlight);
-    console.log("way back " + returnFlight1);
+    // console.log("from " + fromFlight);
+    // console.log("way back " + returnFlight1);
 
 
   });
