@@ -28,6 +28,9 @@ var hotelArea = "";
 var venueName = "";
 var areaLocation = "";
 var website = "";
+var venueLongitude = "";
+var venueLatitude = "";
+
 
 var params = {
   request: {
@@ -61,8 +64,6 @@ var params = {
 function startSearch(){
   $("#first-page").empty();
   loading();
-//     flightSearch();
-//     // here we will call the function that are needed.
 };
 
 function flightSearch(){
@@ -74,7 +75,7 @@ function flightSearch(){
     data: JSON.stringify(params),
     method: "POST"
   }).done((response) => {
-   console.log(response);
+   // console.log(response);
 
    var flightPrice1 = response.trips.tripOption[0].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[0].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[0].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
    var flightPrice2 = response.trips.tripOption[1].saleTotal + "<br>" + "Flight Number: " + response.trips.tripOption[1].slice[0].segment[0].flight.number + "<br>" + "Airline: " + response.trips.tripOption[1].slice[0].segment[0].flight.carrier + "<br>" + fromFlight + " => " + airCode;
@@ -107,7 +108,7 @@ function airportCode(){
     url: URL,
     method: "GET"
   }).done(function(response){ 
-    console.log(response);
+    // console.log(response);
   
     fromFlight = response.stops[0].airports[0].iata;
     params.request.slice[0].origin = fromFlight;
@@ -115,12 +116,12 @@ function airportCode(){
     returnFlight1 = response.stops[0].airports[0].iata;
     params.request.slice[1].destination = returnFlight1;
 
-    console.log("from " + fromFlight);
-    console.log("way back " + returnFlight1);
+    // console.log("from " + fromFlight);
+    // console.log("way back " + returnFlight1);
   });
 
   setTimeout(function() { flightSearch(); }, 1500);
-  console.log(params); 
+  // console.log(params); 
 };
 
 
@@ -140,11 +141,11 @@ var map, infoWindow;
           url: queryURL,
           method: "GET"
         }).done(function(response){
-          console.log(response);
-          console.log(lat);
-          console.log(long);
+          // console.log(response);
+          // console.log(lat);
+          // console.log(long);
           zips = response.results[0].address_components[6].long_name;
-          console.log("hey " + zips);   
+          // console.log("hey " + zips);   
       });
     });
   };
@@ -165,67 +166,67 @@ $("#search-button").on("click", function(){
       url: queryURL,
       method: 'GET'
     }).done(function(response) {
-      console.log(response);
+      // console.log(response);
 
-//If there are no events coming up for the artist the following happens
+      //If there are no events coming up for the artist the following happens
+      if(response.events[0] === undefined){   
+        $("#first-page").empty();
+        $("#noArtist").text("Sorry " + artist + " is not performing anytime soon... Try another artist.");
+        var queryURL = "https://cors-anywhere.herokuapp.com/https://api.giphy.com/v1/gifs/search?q=sorry-taylor-swift&rating=pg-13&api_key=dc6zaTOxFJmzC";
 
-    if(response.events[0] === undefined){
-      
-      $("#first-page").empty();
-      $("#noArtist").text("Sorry " + artist + " is not performing anytime soon... Try another artist.");
-      var queryURL = "https://cors-anywhere.herokuapp.com/https://api.giphy.com/v1/gifs/search?q=sorry-taylor-swift&rating=pg-13&api_key=dc6zaTOxFJmzC";
+        $.ajax({
+          url: queryURL,
+          method: 'GET'
+        }).done(function(response) {
+            var newDiv = $("<div>")
+            var artistGif = $("<img>");
+            artistGif.addClass("col s6 offset-s3");
+            artistGif.attr("src", response.data[1].images.fixed_height.url);
+            $("#noArtist").append(newDiv);
+            newDiv.append(artistGif);
+        });
+        } else {
+          $("#noArtist").empty();
 
-      $.ajax({
-        url: queryURL,
-        method: 'GET'
-      }).done(function(response) {
-          var newDiv = $("<div>")
-          var artistGif = $("<img>");
-          artistGif.addClass("col s6 offset-s3");
-          artistGif.attr("src", response.data[1].images.fixed_height.url);
-          $("#noArtist").append(newDiv);
-          newDiv.append(artistGif);
-      });
-    } else {
-      $("#noArtist").empty();
+          var upcomingEvents = response.events[0].has_upcoming_events;
 
-      var upcomingEvents = response.events[0].has_upcoming_events;
+          venueLatitude = response.events[0].venue.location.lat;
+          venueLongitude = response.events[0].venue.location.lon;
+          hotelArea = response.events[0].venue.display_location;
+          areaLocation = response.events[0].venue.city;
+          venueName = response.events[0].venue.name;
+          website = response.events[0].url;
+          zipCode = response.events[0].venue.postal_code;
+          date = moment(response.events[0].datetime_local).subtract(1, "days").format('YYYY-MM-DD');
+          params.request.slice[0].date = date;
+          fReturn = moment(response.events[0].datetime_local).add(1, "days").format('YYYY-MM-DD');
+          params.request.slice[1].date = fReturn;
+          
+          airportCode();
+          startSearch();
+          getGif();
+          placeSearch();
+          
+          // console.log(venueName);
+          // console.log(zipCode);
+          // console.log("hotel area: " + hotelArea);
+          // console.log(date)
+          // console.log(artist);
 
-      hotelArea = response.events[0].venue.display_location;
-      areaLocation = response.events[0].venue.city;
-      venueName = response.events[0].venue.name;
-      website = response.events[0].url;
-      zipCode = response.events[0].venue.postal_code;
-      date = moment(response.events[0].datetime_local).subtract(1, "days").format('YYYY-MM-DD');
-      params.request.slice[0].date = date;
-      fReturn = moment(response.events[0].datetime_local).add(1, "days").format('YYYY-MM-DD');
-      params.request.slice[1].date = fReturn;
-      
-      airportCode();
-      startSearch();
-      getGif();
-      placeSearch();
-      
-      console.log(venueName);
-      console.log(zipCode);
-      console.log(hotelArea);
-      console.log(date)
-      console.log(artist);
-
-      $("#search-input").val("");
-    }
+          $("#search-input").val("");
+        }
   });
 }); 
 
 
 function placeSearch() {
-  var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M";
+  var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + venueLatitude + "," + venueLongitude + "&radius=500&types=hotel&key=AIzaSyDXrEeiKlrfaQDsH61Sk7OK5xCfJcg8J1M";
   
   $.ajax({ 
     url: queryURL,
     type: "GET"
   }).done(function(response) {
-    console.log("locations: " + response);
+    console.log(response);
   });
 };
 
