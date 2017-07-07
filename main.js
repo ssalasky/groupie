@@ -1,5 +1,4 @@
 $("#loadingScreen").hide();
-
 var config = {
   apiKey: "AIzaSyD7Dl_oVcskvGAUxxgm3LwQC_saHWDZlbQ",
   authDomain: "groupie-project.firebaseapp.com",
@@ -8,20 +7,15 @@ var config = {
   storageBucket: "groupie-project.appspot.com",
   messagingSenderId: "98043513312"
 };
-
 firebase.initializeApp(config);
-
 var database = firebase.database();
-
 $("#search-button").on("click", function(){
   event.preventDefault();
   artist = $("#search-input").val();
-
   database.ref().push({
     artist:artist
   });
 });
-
 var t;
 var artist = "";
 var hotelArea = "";
@@ -30,8 +24,6 @@ var areaLocation = "";
 var website = "";
 var venueLongitude = "";
 var venueLatitude = "";
-
-
 var params = {
   request: {
     slice: [
@@ -65,7 +57,6 @@ function startSearch(){
   $("#first-page").empty();
   loading();
 };
-
 function flightSearch(){
         var queryURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyBao5t2cXEN-W6a_Mw0JBIUlifRXiSaLaM"  
         //AIzaSyAoBexp2doZWkhqk1nNKby3KfXIa737dMs"//AIzaSyDlW31JmWnRfy96JfYhjDQiL2ZQNYB2xkk";
